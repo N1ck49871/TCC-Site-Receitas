@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+/*https://icons8.com/line-awesome*/
+/*https://icons8.com/icon/set/steak/ios-glyphs*/
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%; /* Font-size padrao vai ser 10px, para o rem será usado como base essa medida*/
+    --orange: #EEAB6E;
+    --light-blue: #1DA1F2;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--orange);
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+    position: relative;
+    width: 40rem;
+    background: white;
+    padding: 5rem 4rem;
+    border-radius: 1.5rem;
+}
+
+header {
+    color: var(--orange);
+    font-size: 1.6rem;
+    margin-bottom: 5rem;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+header h1 {
+    border-bottom: 3px solid var(--orange);
+    max-width: 10rem;
+    margin-inline: auto;
+}
+
+.input-field, form .button {
+    margin: 2.5rem 0;
+    position: relative;
+    height: 5rem;
+    width: 100%;
+}
+
+.input-field input {
+    height: 100%;
+    width: 100%;
+    border: 1px solid silver;
+    padding-left: 1.5rem;
+    outline: none;
+    font-size: 1.9rem;
+    transition: .4s;
+    border-radius: 0.5rem
+}
+
+input:focus { /* Quando o input é selecionado */
+    border: 1px solid var(--orange);
+}
+
+.input-field label, span.show {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.input-field label {
+    left: 1.5rem;
+    pointer-events: none;
+    color: grey;
+    font-size: 1.7rem;
+    transition: .4s;
+}
+
+.input-field input {
+    background-color: white;
+    color: #000;
+}
+
+span.show {
+    right: 2rem; /* 20 px */
+    color: var(--light-blue);
+    font-size: 2.5rem;
+    cursor: pointer;
+    user-select: none;
+    visibility: hidden;
+}
+
+
+
+
+input:valid ~ span.show { 
+    /* Verifica se o valor escrito no input, condiz com o tipo definido para o input*/
+    /* Caso o que o usuario digitar condizer com a especificação do input, ele vai realizar isto */
+    /* Quando o input estiver válido, ele irá executar para todos os span que tiver
+    a classe show o código abaixo. */
+    /* Quando eu digitar algo no input senha, ele irá reconhecer que está valido e irá
+    aparecer o span show */
+    /* ~ Seleciona todo elemento span.show que é precedido de um elemento input:valid */
+    /* Com o atributo required ele só irá verificar quando for escrito algo */
+    visibility: visible;
+
+}
+
+input:focus ~ label, /* Seleciona todo elemento label precedido de um input selecionado */
+input:valid ~ label { /* Seleciona todo elemento label precedido de um input validado*/
+    transform: translateY(-3.7rem);
+    background: white; /* Cor de fundo do elemento label, para que ele se sobreponha a linha azul; está uma camada acima dos elementos */
+    padding-inline: .3rem;
+    font-size: 1.6rem;
+    color: var(--orange);
+
+}
+
+form .button {
+    margin-top: 3rem; 
+    overflow: hidden; /* Esconde a barra de scroll */
+    z-index: 111; /* Camada do form está 111 camadas acima */
+}
+
+/*
+.button .inner {
+    position: absolute;
+    height: 100%;
+    width: 300%;
+    left: -100%;
+    z-index: -1;
+    transition: all .4s;
+    background: -webkit-linear-gradient(right,#ff0000,#fc00ff,#ff0066,#33cc33);
+}
+.button:hover .inner {  Quando passar o mouse por cima do botão, o elemento inner
+    left: 0;  Voltando a animação do gradient do inner 
+}
+*/
+.button input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: var(--orange);
+    outline: none; /* Linha de fora, depois do border */
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 1rem;
+    transition: all 0.2s;
+}
+
+.signup {
+    margin-top: 3rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6rem;
+}
+
+.signup a {
+    color: var(--orange);
+    text-decoration: none;
+
+
+}
+
+.signup a:after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background-color: var(--orange);
+    color: var(--orange);
+    display: block;
+    position: relative;
+    bottom: 0.1rem;
+    left: 17.8rem;
+    transition: width 0.4s;
+}
+
+.signup a:hover::after {
+    color: var(--orange);
+    padding-inline: 0.8rem;
+    width: 8rem;
+}
+
+.button input:hover {
+    filter: brightness(1.2);
+}
+
+.container img {
+    position: absolute;
+    left: 875px;
+    top: -160px;
+    width: 30%;
+}

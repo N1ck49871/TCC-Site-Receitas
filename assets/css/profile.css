@@ -1,0 +1,139 @@
+@import url('https://rsms.me/inter/inter.css');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+    --orangeText: #B96D27;
+    --orange: #EEAB6E;
+    --orangeDark: #f27500;
+    --orangeLight: #f4b982;
+    --light-blue: #1DA1F2;
+    --grayText: #505050;
+    --grayLabel: #404040;
+    --purpleLight: #7b7be4;
+}
+
+body {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+}
+
+/*==================CABEÇALHO=============*/
+
+.container header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 4px 4px rgba(80, 80, 80, 0.25);
+    padding-block: 1.4rem;
+}
+
+.container header .logoTitulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.6rem;
+    margin-left: 3.5rem;
+}
+
+.container header .logoTitulo h1 {
+    font-size: 2.4rem;
+    line-height: 2.9rem;
+    text-align: center;
+}
+
+.container header .usuarioInicio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.8rem;
+    margin-right: 3.5rem;
+}
+
+.container header .usuarioInicio h2 {
+    font-size: 2.4rem;
+    line-height: 2.9rem;
+    text-align: center;
+    color: var(--grayText);
+}
+
+/*=============SECTION============*/
+
+.container section form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20rem;
+    margin-inline: 6rem;
+    gap: 7rem;
+}
+
+
+.container section .col-right div {
+    margin-bottom: 6.5rem;
+}
+
+.container section .col-right label {
+    font-weight: bold;
+    font-size: 3.6rem;
+    line-height: 4.4rem;
+    color: var(--grayLabel);
+    display: block;
+}
+
+.container section .col-right div input {
+    font-family: 'Lato', 'Times New Roman', Times, serif;
+    font-size: 2.8rem;
+    font-weight: 600;
+    line-height: 3.36rem;
+    outline: none;
+    border: none;
+    padding-top: 0.7rem;
+    padding-bottom: 1.1rem;
+    padding-left: 0;
+    border-bottom: 0.1rem solid black;
+    width: 60vw;
+}
+
+.container section .col-right .buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-inline: auto;
+    gap: 3.5rem;
+}
+
+.container section .col-right .buttons button {
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    outline: none;
+    border: none;
+    background-color: var(--orangeLight);
+    color: white;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    box-shadow: 0px 4px 4px rgba(80, 80, 80, 0.25);
+    transition: all 0.5s;
+}
+
+.container section .col-right .buttons button:hover {
+    filter: brightness(1.1);
+    cursor: pointer;
+    border: 1px solid var(--grayText);
+}
+
+
+

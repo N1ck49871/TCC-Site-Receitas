@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%; /* Font-size padrao vai ser 10px, para o rem será usado como base essa medida*/
+    --orange: #EEAB6E;
+    --orangeDark: #f27500;
+    --orangeLight: #f4b982;
+    --light-blue: #1DA1F2;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--orange);
+}
+
+.container {
+    position: relative;
+    width: 40rem;
+    background: white;
+    padding: 5rem 4rem;
+    border-radius: 1.5rem;
+}
+
+header h1 {
+    border-bottom: 3px solid var(--orange);
+    max-width: 18.6rem;
+    margin-inline: auto;
+}
+
+header {
+    color: var(--orange);
+    font-size: 1.6rem;
+    margin-bottom: 5rem;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+.input-field, form .button {
+    margin: 2.5rem 0;
+    position: relative;
+    height: 5rem;
+    width: 100%;
+}
+
+.input-field input {
+    height: 100%;
+    width: 100%;
+    border: 1px solid silver;
+    padding-left: 1.5rem;
+    outline: none;
+    font-size: 1.9rem;
+    transition: .4s;
+    border-radius: 0.5rem
+}
+
+input:focus { /* Quando o input é selecionado */
+    border: 1px solid var(--orange);
+}
+
+.input-field label, span.show {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.input-field label {
+    left: 1.5rem;
+    pointer-events: none;
+    color: grey;
+    font-size: 1.7rem;
+    transition: .4s;
+}
+
+.input-field input {
+    background-color: white;
+    color: #000;
+}
+
+span.show {
+    right: 2rem; /* 20 px */
+    color: var(--light-blue);
+    font-size: 2.5rem;
+    cursor: pointer;
+    user-select: none;
+    visibility: hidden;
+}
+
+
+input:valid ~ span.show { 
+    /* Verifica se o valor escrito no input, condiz com o tipo definido para o input*/
+    /* Caso o que o usuario digitar condizer com a especificação do input, ele vai realizar isto */
+    /* Quando o input estiver válido, ele irá executar para todos os span que tiver
+    a classe show o código abaixo. */
+    /* Quando eu digitar algo no input senha, ele irá reconhecer que está valido e irá
+    aparecer o span show */
+    /* ~ Seleciona todo elemento span.show que é precedido de um elemento input:valid */
+    /* Com o atributo required ele só irá verificar quando for escrito algo */
+    visibility: visible;
+
+}
+
+input:focus ~ label, /* Seleciona todo elemento label precedido de um input selecionado */
+input:valid ~ label { /* Seleciona todo elemento label precedido de um input validado*/
+    transform: translateY(-3.7rem);
+    background: white; /* Cor de fundo do elemento label, para que ele se sobreponha a linha azul; está uma camada acima dos elementos */
+    padding-inline: .3rem;
+    font-size: 1.6rem;
+    color: var(--orange);
+
+}
+
+form .button {
+    margin-top: 3rem; 
+    overflow: hidden; /* Esconde a barra de scroll */
+    z-index: 111; /* Camada do form está 111 camadas acima */
+}
+
+/*
+.button .inner {
+    position: absolute;
+    height: 100%;
+    width: 300%;
+    left: -100%;
+    z-index: -1;
+    transition: all .4s;
+    background: -webkit-linear-gradient(right,#ff0000,#fc00ff,#ff0066,#33cc33);
+}
+.button:hover .inner {  Quando passar o mouse por cima do botão, o elemento inner
+    left: 0;  Voltando a animação do gradient do inner 
+}
+*/
+.button button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: var(--orange);
+    outline: none; /* Linha de fora, depois do border */
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 1rem;
+    transition: all 0.2s;
+}
+
+.signup {
+    margin-top: 3rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6rem;
+}
+
+.signup a {
+    color: var(--orange);
+    text-decoration: none;
+
+
+}
+
+.signup a:after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background-color: var(--orange);
+    color: var(--orange);
+    display: block;
+    position: relative;
+    bottom: 0.1rem;
+    left: 17.8rem;
+    transition: width 0.4s;
+}
+
+.signup a:hover::after {
+    color: var(--orange);
+    padding-inline: 0.8rem;
+    width: 6.9rem;
+}
+
+.button button:hover {
+    filter: brightness(1.2);
+}
+
+/*===================CATEGORIAS (CLICAR BOTÃO PRÓXIMO)====================*/
+
+.main-container {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-container .col-a {
+    grid-area: A;
+}
+.main-container .col-b {
+    grid-area: B;
+}
+.main-container .col-c {
+    grid-area: C;
+}
+.main-container .col-d {
+    grid-area: D;
+}
+.main-container .col-f {
+    grid-area: F;
+}
+.main-container .col-g {
+    grid-area: G;
+}
+
+.main-container h2 {
+    margin-bottom: 4rem;
+    color: white;
+    font-size: 4rem;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+.main-container .radio-buttons {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 25rem 25rem 25rem;
+    grid-template-areas: 
+    'A B C'
+    'D F G';
+}
+
+.main-container .custom-radio {
+    margin: 1.5rem;
+}
+
+.main-container .custom-radio input {
+    display: none;
+}
+
+.main-container .custom-radio .radio-btn {
+    margin: 1rem;
+    width: 18rem;
+    height: 18rem;
+    border: 0.3rem solid transparent;
+    display: inline-block;
+    border-radius: 1rem;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 0 2rem #c3c3c367;
+    cursor: pointer;
+    background-color: #ffffff;
+    filter: brightness(0.94);
+}
+
+.main-container .custom-radio .radio-btn>i {
+    color: #ffffff;
+    background-color: var(--orangeDark);
+    font-size: 2rem;
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%) scale(2);
+    border-radius: 5rem;
+    padding: 0.3rem;
+    transition: 0.4s;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.main-container .custom-radio .radio-btn .recipe-icon {
+    width: 8rem;
+    height: 8rem;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.main-container .custom-radio .radio-btn .recipe-icon i {
+    color: var(--orangeDark);
+    line-height: 8rem;
+    font-size: 6rem;
+}
+
+.main-container .custom-radio .radio-btn .recipe-icon h3 {
+    color: var(--orangeDark);
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.main-container .custom-radio input:checked + .radio-btn {
+    border: 0.3rem solid var(--orangeDark);
+}
+
+.main-container .custom-radio input:checked + .radio-btn > i {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+.main-container .button2 input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: var(--orangeDark);
+    outline: none; /* Linha de fora, depois do border */
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 1rem;
+    transition: all 0.2s;
+    font-weight: bold;
+}
+
+.main-container .button2 input:hover {
+    filter: brightness(1.2);
+}
+
+.main-container .button2 {
+    margin: 0 auto;
+    position: relative;
+    height: 5rem;
+    width: 35vw;
+    margin-top: 4rem;
+}
+
+
+
+
+@media (max-width: 800px) {
+
+    .main-container {
+        margin: auto;
+        width: 100vw;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .main-container h2 {
+        font-size: 2.5rem;
+    }
+
+    .main-container .radio-buttons {
+        width: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+        'A B'
+        'C D'
+        'F G';
+    }  
+
+    .main-container .custom-radio .radio-btn {
+        width: 15rem;
+        height: 15rem;
+    }
+
+    .main-container .custom-radio .radio-btn img {
+        width: 40%;
+        height: 40%;
+    }
+
+    .main-container .custom-radio .radio-btn h3 {
+        font-size: 0.8rem;
+    }
+
+    .main-container .button2 input{
+        width: 40rem;
+        font-size: 2rem;
+    }
+
+    .main-container .button2 {
+        width: 40rem;
+    }
+    
+}

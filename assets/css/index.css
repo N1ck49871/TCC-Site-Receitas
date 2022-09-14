@@ -1,0 +1,500 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+@import url('https://rsms.me/inter/inter.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+    --orangeText: #B96D27;
+    --orange: #EEAB6E;
+    --orangeDark: #f27500;
+    --orangeLight: #f4b982;
+    --light-blue: #1DA1F2;
+    --grayText: #8D8989;
+    --purpleLight: #7b7be4;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--orange);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    color: white;
+    overflow-y: hidden;
+}
+
+body::-webkit-scrollbar-track {
+    background: gray;
+}
+
+
+
+.container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.container .formSearch .navBar {
+    background-color: rgb(255, 255, 255, 0.5);
+    width: 100%;
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.container .formSearch .navBar .menuIcon {
+   margin-inline: 2.8rem;
+}
+
+
+/*=================SEARCHBAR================= */
+
+/*
+
+.container .formSearch .navBar .searchBar {
+    position: relative;
+    width: 90vw;
+    height: 5rem;
+    margin-right: 2rem;
+    background: #EDEDED;
+    margin: auto;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
+    border-radius: 3rem;
+    //border: 1px solid #9E9E9E;
+}
+
+/*
+.container .formSearch .navBar .searchBar input {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 3rem;
+    font-size: 1.5rem;
+    line-height: 30rem;
+    padding: 2rem;
+    background: #EDEDED;
+    outline: none;
+    border: none;
+    transition: all 1000ms;
+    color: black;
+    opacity: 0.8;
+}
+
+.container .formSearch .navBar .searchBar input::placeholder {
+    color: rgb(163, 163, 163);
+}
+
+.container .formSearch .navBar .searchBar input:focus {
+    border: 1px solid var(--orangeDark)
+}
+
+.container .formSearch .navBar .searchBar .button-search {
+    position: absolute;
+    right: -2px;
+    top: 0;
+    width: 7rem;
+    height: 100%;
+    text-align: center;
+    background-color: #f27500;
+    border-radius: 0 2.5rem 2.5rem 0;
+    height: 100%;
+}
+
+.container .formSearch .navBar .searchBar .button-search button {
+    position: relative;
+    z-index: 100;
+    outline: none;
+    background: transparent;
+    text-decoration: none;
+    border: none;
+}
+
+.container .formSearch .navBar .searchBar .button-search button i {
+    font-size: 3.5rem;
+    line-height: 5rem;
+    color: white;
+    font-weight: bold;
+}
+.navBar .searchBar .button-search:hover, .button-search button:hover, .button-search i:hover {
+    cursor: pointer;
+}
+*/
+.searchBar {
+    width: 80vw;
+    display: flex;
+    align-items: stretch;
+    margin-right: auto;
+}
+
+.searchControl,
+.searchBtn {
+    width: 100%;
+    color: black;
+    font-size: 1.8rem;
+}
+
+.searchControl {
+    padding: 0 1rem;
+    font-size: 1.5rem;
+    font-family: inherit;
+    outline: 0;
+    border: 0.1rem solid var(--orangeLight);
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    transition: all 0.4s linear;
+}
+
+.searchControl::placeholder {
+    color: var(--orangeDark);
+}
+
+.searchBtn {
+    width: 5.5rem;
+    height: 5.5rem;
+    font-size: 1.8rem;
+    background-color: var(--orangeLight);
+    color: #fff;
+    border: none;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    transition: all 0.2s linear;
+    cursor: pointer;
+}
+
+.searchBtn:hover{
+    background-color: var(--orangeDark);
+}
+
+/*===========CATEGORIAS==========*/
+
+
+.container .formSearch .main-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5.8rem;
+    margin-inline: auto;
+    width: 80%;
+}
+
+.container .formSearch .main-container .radio-buttons{
+    /*
+    display: flex;
+    align-items: space-between;
+    justify-content: space-between;
+    width: 100%;
+    /*gap: 4rem;
+    height: 16rem;
+    */
+    height: 18rem;
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.container .formSearch .main-container .custom-radio {
+    margin-inline: 4rem;
+}
+
+.container .formSearch .main-container .radio-btn {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    margin: 1rem;
+    border-radius: 1rem;
+    background-color: #ffffff;
+    border: 0.3rem solid transparent;
+    box-shadow: 0 0 2rem #c3c3c367;
+    filter: brightness(0.94);
+}
+
+.main-container .custom-radio input {
+    display: none;
+    text-decoration: none;
+}
+
+.container .formSearch .main-container .radio-btn>i {
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%) scale(2);
+    font-size: 2rem;
+    border-radius: 5rem;
+    padding: 0.3rem;
+    background-color: var(--orangeDark);
+    color: #ffffff;
+    transition: all 0.3s linear;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.main-container .custom-radio .radio-btn .recipe-icon h3 {
+    color: var(--orangeDark);
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.main-container .custom-radio input:checked + .radio-btn {
+    border: 0.3rem solid var(--orangeDark);
+}
+
+.main-container .custom-radio input:checked + .radio-btn > i {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+/*=============== RESULTADO DA BUSCA ================*/
+
+.recipeResults {
+    margin-top: 7.5rem;
+}
+
+.recipeResults h2 {
+    display: inline-block;
+    padding-right: 4rem;
+    padding: 1rem;
+    border-radius: 0 1rem 1rem 0;
+    box-shadow: 0 0 2rem #00000067;
+    background-color: white;
+    width: 22%;
+    font-size: 1.7rem;
+    text-align: end;
+
+}
+
+.receitasCentro {
+    margin: 0 auto;
+    margin-top: 6rem;
+    max-width: 150rem;
+}
+
+.receitas {
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap: 0.4rem;
+    margin-top: -5rem;
+}
+
+.itemReceita {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0.4rem 2.1rem -1.2rem rgba(0, 0, 0, 0.79);
+    width: 22.4rem;
+    margin-top: 2rem;
+    border-radius: 1rem;
+    color: #8D8989;
+    background-color: white;
+    transition: all 500ms;
+}
+
+.receitas .itemReceita:hover {
+    filter: brightness(0.8);
+}
+
+.receitas .itemReceita a {
+    text-decoration: none;
+    color: unset;
+}
+
+.receitas .itemReceita .nomeReceita {
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-family: 'Inter';
+    text-align: center;
+    margin-top: 0.8rem;
+}
+
+.receitas .itemReceita .infoAdicionaisReceita {
+    display: flex;
+    justify-content: space-around;
+    margin-block: 1rem;
+}
+
+.receitas .itemReceita .infoAdicionaisReceita .tempoPreparoReceita, .categoriaReceita {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.receitas .itemReceita .tempoPreparoReceita {
+    font-size: 1.3rem;
+    font-family: 'Inter';
+    font-weight: 500;
+}
+
+.receitas .itemReceita .tempoPreparoReceita img {
+    max-width: 1.8rem;
+    max-height: 1.8rem;
+    margin-right: 0.8rem;
+}
+
+.receitas .itemReceita .categoriaReceita {
+    font-size: 1.3rem;
+    font-family: 'Inter';
+    font-weight: 500;
+}
+
+.receitas .itemReceita .categoriaReceita img {
+    max-width: 1.8rem;
+    max-height: 1.8rem;
+    margin-right: 0.8rem;
+}
+
+.receitas .imgReceita img {
+    width: 100%;
+    min-height: 20rem;
+    display: block;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+/*=============== CARD RECEITA ==================*/
+
+.showRecipe {
+    display: flex;
+}
+
+.detalhesReceita {
+    display: none;
+    justify-content: center;
+    position: fixed;
+    gap: 3.5rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Inter', sans-serif;
+    width: 95rem;
+    height: 85rem;
+    border-radius: 1.5rem;
+    padding: 3.5rem;
+    background-color: rgb(243, 243, 243);
+    margin: auto auto;
+    /*margin: 20px auto;*/
+}
+
+.detalhesReceita .col-left {
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+}
+
+.detalhesReceita .col-left .videoReceita img {
+    width: 38.3rem;
+    height: 24.4rem;
+    border-radius: 2rem;
+}
+
+.detalhesReceita .col-left h2 {
+    font-size: 3.2rem;
+    color: var(--orangeText);
+    margin-bottom: 1.5rem;
+}
+
+.detalhesReceita .col-left p {
+    font-size: 1.25rem;
+    line-height: 2.3rem;
+    font-weight: 500;
+}
+
+
+
+/* COLUNA DIREITA */
+
+.detalhesReceita .col-right {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.detalhesReceita .col-right h1 {
+    font-size: 3rem;
+    color: var(--orangeText);
+}
+
+.detalhesReceita .col-right .informacoesReceita {
+    display: flex;
+    justify-content: start;
+    gap: 5rem;
+}
+
+.detalhesReceita .col-right .informacoesReceita .divInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.detalhesReceita .col-right .informacoesReceita div img {
+    max-width: 3.4rem;
+    max-height: 3.4rem;
+}
+
+.detalhesReceita .col-right .informacoesReceita div label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--grayText);
+}
+
+.detalhesReceita .col-right .informacoesReceita .divInfoExclusiva {
+    display: flex;
+    flex-direction: column;
+    gap: 0.95rem;
+}
+
+.detalhesReceita .col-right .modoPreparoReceita {
+    margin-top: 7rem;
+}
+
+.detalhesReceita .col-right .modoPreparoReceita .modoPreparoTitulo {
+    display: flex;
+    justify-content: start;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.detalhesReceita .col-right .modoPreparoReceita .modoPreparoTitulo h2 {
+    font-size: 3rem;
+    color: var(--orangeText);
+    line-height: 3rem;
+}
+
+.detalhesReceita .col-right .modoPreparoReceita p {
+    font-size: 1.25rem;
+    line-height: 1.7rem;
+    font-weight: 500;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
