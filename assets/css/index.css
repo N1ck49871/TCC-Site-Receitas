@@ -13,7 +13,7 @@
     --orangeText: #B96D27;
     --orange: #EEAB6E;
     --orangeDark: #f27500;
-    --orangeLight: #f4b982;
+    --orangeLight: #ef9d50;
     --light-blue: #1DA1F2;
     --grayText: #8D8989;
     --purpleLight: #7b7be4;
@@ -52,6 +52,10 @@ body::-webkit-scrollbar-track {
 
 .container .formSearch .navBar .menuIcon {
    margin-inline: 2.8rem;
+}
+
+.container .formSearch .navBar .menuIcon img {
+   height: 100%;
 }
 
 
@@ -418,6 +422,18 @@ body::-webkit-scrollbar-track {
     display: flex;
     flex-direction: column;
     gap: 5rem;
+}
+
+.detalhesReceita .la-times {
+    font-size: 3rem;
+    font-weight: bold;
+
+}
+
+.detalhesReceita .btnCloseAndHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .detalhesReceita .col-right h1 {

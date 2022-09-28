@@ -1,5 +1,6 @@
 <?php
 include "./assets/php/conexao.php";
+include "./assets/php/receitaController.php"
 session_start();
 ?>
 
@@ -18,14 +19,11 @@ session_start();
         <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
     </head>
     <body>
-        <div>aa</div>
-
-
         <div class="container">
             <nav class="recipeSearch">
                 <form action="" name="formSearch" method="GET" class="formSearch">
                         <div class="navBar">
-                            <a href="#" class="menuIcon"><img src="./assets/img/userIcon.png" alt=""></a>
+                            <a href="#" class="menuIcon"><img src="./assets/img/iconUser.png" alt=""></i></a>
                             <div class="searchBar">
                                 <input class="searchControl" name="pesquisa" type="search" placeholder="Digite o ingrediente da sua receita ou Selecione a receita pra filtrar">
                                 <button class="searchBtn"type="submit">
@@ -310,7 +308,11 @@ session_start();
                     </div>
                 </div>
                 <div class="col-right">
-                    <h1>Mac And Cheese Americano</h1>
+                    <div class="btnCloseAndHeader">
+                        <h1>Mac And Cheese Americano</h1>
+                        <a href="#"><i class="las la-times" id="btnClose"></i></a>
+
+                    </div>
                     <div class="informacoesReceita">
                         <div class="divInfo">
                             <img src="./assets/img/categoriaIcon.png" alt="">
