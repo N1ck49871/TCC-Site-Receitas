@@ -2,11 +2,11 @@
 include_once "conexao.php";
 
 
-$name = $_POST['nameUser']
-$email = $_POST['email']
-$pwd = $_POST['password']
+$name = $_POST['nameUser'];
+$email = $_POST['email'];
+$pwd = $_POST['password'];
 
-$dados[] = array($name, $email ) 
+$dados[] = array($name, $email, $pwd); 
 class usuarioController{
 
     public static function favCategoriaUser ( $idUsuario) {
@@ -20,9 +20,12 @@ class usuarioController{
 
     }
 
-    public function cadastrar($email, $nomeUsuario, )
+    public function cadastrar($email, $nomeUsuario, ){
+        $dados[0] = $name;
+        $dados[1] = $email;
+    
+    }
 
-    $dados[0] = 
 
 
 }
