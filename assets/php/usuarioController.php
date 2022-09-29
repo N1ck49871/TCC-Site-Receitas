@@ -2,10 +2,11 @@
 include_once "conexao.php";
 
 
-$name = $_POST['name']
+$name = $_POST['nameUser']
 $email = $_POST['email']
+$pwd = $_POST['password']
 
-$dados[$] = array($name, $email ) 
+$dados[] = array($name, $email ) 
 class usuarioController{
 
     public static function favCategoriaUser ( $idUsuario) {

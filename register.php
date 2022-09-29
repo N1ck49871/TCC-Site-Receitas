@@ -26,7 +26,7 @@ session_start();
                             <h1>Cadastro</h1>
                         </header>
                         <div class="input-field">
-                            <input id="nome" name='nameUser'type="text" required form="formulario">
+                            <input id="nome" name='nameUser' type="text" required form="formulario">
                             <label>Nome de usu&aacute;rio</label>
                         </div>
                         <div class="input-field">
@@ -62,7 +62,7 @@ session_start();
                 
                 <div class="radio-buttons">
                         <label class="custom-radio col-a">
-                            <input type="radio" name="radio" value="Frutos do Mar" form="formulario">
+                            <input type="radio" name="categoria" value="1" form="formulario">
                             <span class="radio-btn">
                                 <i class="las la-check-circle"></i>
                                 <div class="recipe-icon">
@@ -72,7 +72,7 @@ session_start();
                             </span>
                         </label>
                         <label class="custom-radio col-b">
-                            <input type="radio" name="radio" value="Massas" form="formulario">
+                            <input type="radio" name="categoria" value="2" form="formulario">
                             <span class="radio-btn">
                                 <i class="las la-check-circle"></i>
                                 <div class="recipe-icon">
@@ -82,7 +82,7 @@ session_start();
                             </span>
                         </label>
                         <label class="custom-radio col-c">
-                            <input type="radio" name="radio" value="Vegano" form="formulario">
+                            <input type="radio" name="categoria" value="3" form="formulario">
                             <span class="radio-btn"><i class="las la-check-circle"></i>
                                 <div class="recipe-icon">
                                     <img src="./assets/img/veganoIcone.png"/>
@@ -91,7 +91,7 @@ session_start();
                             </span>
                         </label>
                         <label class="custom-radio col-d">
-                            <input type="radio" name="radio" value="Salgados" form="formulario">
+                            <input type="radio" name="categoria" value="4" form="formulario">
                             <span class="radio-btn"><i class="las la-check-circle"></i>
                                 <div class="recipe-icon">
                                     <img src="./assets/img/croassaIcone.png"/>
@@ -100,7 +100,7 @@ session_start();
                             </span>
                         </label>
                         <label class="custom-radio col-f">
-                            <input type="radio" name="radio" value="Doces" form="formulario">
+                            <input type="radio" name="radio" value="5" form="formulario">
                             <span class="radio-btn"><i class="las la-check-circle"></i>
                                 <div class="recipe-icon">
                                     <img src="./assets/img/boloIcone.png"/>
@@ -109,7 +109,7 @@ session_start();
                             </span>
                         </label>
                         <label class="custom-radio col-g">
-                            <input type="radio" name="radio" value="Carnes" form="formulario">
+                            <input type="radio" name="radio" value="6" form="formulario">
                             <span class="radio-btn"><i class="las la-check-circle"></i>
                                 <div class="recipe-icon">
                                     <img src="./assets/img/carneIcone.png"/>
