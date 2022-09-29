@@ -1,6 +1,4 @@
 
-alter table Receita add porcoes int(2) not null;
-
 create database TCC_Receitas;
 use TCC_Receitas;
 
