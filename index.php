@@ -21,9 +21,31 @@ session_start();
     <body>
         <div class="container">
             <nav class="recipeSearch">
-                <form action="" name="formSearch" method="GET" class="formSearch">
+                <form action="teste.php" name="formSearch" method="GET" class="formSearch">
                         <div class="navBar">
-                            <a href="#" class="menuIcon"><img src="./assets/img/iconUser.png" alt=""></i></a>
+                            <div class="modal-perfil">
+                                <div class="IconeUsuario">
+                                    <a href="#" class="menuIcon"><img src="./assets/img/iconUser.png" alt=""></i></a>
+                                </div>
+                                <div class="modal">
+                                    <a href="#">
+                                        <span>Alterar Informações</span>
+                                        <div class="img">
+                                            <img src="./assets/img/iconUserModal.png" alt="">
+                                        </div>
+                                    </a>
+                                    <a href="#">
+                                        <span>Sair da conta</span>
+                                        <div class="img">
+                                        <img src="./assets/img/iconClose.png" alt="">
+                                            <!-- <img src="./assets/img/iconClose.png" alt=""> -->
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+
                             <div class="searchBar">
                                 <input class="searchControl" name="pesquisa" type="search" placeholder="Digite o ingrediente da sua receita ou Selecione a receita pra filtrar">
                                 <button class="searchBtn"type="submit">
@@ -44,6 +66,7 @@ session_start();
                                             </div>
                                         </span>
                                     </label>
+
                                     <label class="custom-radio col-b">
                                         <input type="radio" name="radio" value="2">
                                         <span class="radio-btn">
@@ -54,6 +77,7 @@ session_start();
                                             </div>
                                         </span>
                                     </label>
+
                                     <label class="custom-radio col-c">
                                         <input type="radio" name="radio" value="3">
                                         <span class="radio-btn"><i class="las la-check-circle"></i>
@@ -63,6 +87,7 @@ session_start();
                                             </div>
                                         </span>
                                     </label>
+
                                     <label class="custom-radio col-d">
                                         <input type="radio" name="radio" value="4">
                                         <span class="radio-btn"><i class="las la-check-circle"></i>
@@ -72,6 +97,7 @@ session_start();
                                             </div>
                                         </span>
                                     </label>
+
                                     <label class="custom-radio col-f">
                                         <input type="radio" name="radio" value="5">
                                         <span class="radio-btn"><i class="las la-check-circle"></i>
@@ -81,6 +107,7 @@ session_start();
                                             </div>
                                         </span>
                                     </label>
+
                                     <label class="custom-radio col-g">
                                         <input type="radio" name="radio" value="6">
                                         <span class="radio-btn"><i class="las la-check-circle"></i>
@@ -90,6 +117,7 @@ session_start();
                                             </div>
                                         </span>
                                     </label>
+
                                 </div>
                         </div>
                 </form>
