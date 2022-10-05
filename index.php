@@ -1,6 +1,6 @@
 <?php
 include "./assets/php/conexao.php";
-include "./assets/php/receitaController.php"
+include "./assets/php/receitaController.php";
 session_start();
 ?>
 
