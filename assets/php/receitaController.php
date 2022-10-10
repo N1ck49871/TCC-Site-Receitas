@@ -30,7 +30,7 @@ class ReceitaController{
         $stmt = $conn->prepare("SELECT * FROM receita WHERE idcategoriaFK=$categoriaSelect");
         $stmt->execute();
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        $stmt = null;
+        // $stmt = null;
         return $resultado;
     }
 

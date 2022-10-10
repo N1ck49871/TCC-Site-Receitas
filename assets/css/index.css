@@ -310,11 +310,20 @@ body::-webkit-scrollbar-track {
 }
 
 .receitas .itemReceita a {
+    height: 100%;
     text-decoration: none;
     color: unset;
 }
 
+.receitas .itemReceita .alignItems {
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .receitas .itemReceita .nomeReceita {
+    height: 50%;
     font-size: 1.6rem;
     font-weight: 700;
     font-family: 'Inter';
