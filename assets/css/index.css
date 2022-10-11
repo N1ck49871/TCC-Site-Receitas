@@ -42,20 +42,20 @@ body::-webkit-scrollbar-track {
 }
 
 .container .formSearch .navBar {
+    position: relative;
     background-color: rgb(255, 255, 255, 0.5);
     width: 100%;
     height: 8rem;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    padding: 0 20px;
 }
 
-.container .formSearch .navBar .menuIcon {
-   margin-inline: 2.8rem;
-}
 
-.container .formSearch .navBar .menuIcon img {
+.container .formSearch .navBar .IconeUsuario img {
    height: 100%;
+   margin-inline: 2.8rem;
 }
 
 
@@ -305,6 +305,10 @@ body::-webkit-scrollbar-track {
     transition: all 500ms;
 }
 
+.itemReceita .btnAbrirReceita {
+    cursor: pointer;
+} 
+
 .receitas .itemReceita:hover {
     filter: brightness(0.8);
 }
@@ -505,13 +509,22 @@ body::-webkit-scrollbar-track {
 
 /*=========== MODAL =============*/
 
+#btnModal {
+    cursor: pointer;
+}
+
+
+.modal-perfil {
+    position: relative;
+}
+
 .modal {
     width: 256px;
     opacity: 1;
-    visibility: visible;
+    visibility: hidden;
     position: absolute;
-    left: 12px;
-    top: 10%;
+    left: 2%;
+    top: calc(100% + 20px);
     box-shadow: rgb(0 0 0 / 60%) 0px 5px 20px;
     background-color: white;
     z-index: 9;

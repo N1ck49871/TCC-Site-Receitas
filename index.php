@@ -39,11 +39,11 @@ $result = $conn->query($sql);
         <nav class="recipeSearch">
             <form action="index.php" name="formSearch" method="GET" class="formSearch">
                 <div class="navBar">
-                    <div class="modal-perfil">
+                    <div class="modal-perfil" id="btnModal">
                         <div class="IconeUsuario">
-                            <a href="#" class="menuIcon"><img src="./assets/img/iconUser.png" alt=""></i></a>
+                            <img src="./assets/img/iconUser.png" alt="">
                         </div>
-                        <div class="modal">
+                        <div class="modal" id="modal">
                             <a href="#">
                                 <span>Alterar Informações</span>
                                 <div class="img">
@@ -166,7 +166,7 @@ $result = $conn->query($sql);
 
                                         echo "
                                         <div class='itemReceita'>
-                                            <a href='#' class='btnAbrirReceita' id='$linha[idReceita]'>
+                                            <div class='btnAbrirReceita' id='$linha[idReceita]'>
                                                 <div class='imgReceita'>
                                                     <img src='./assets/img/food.jpg'>
                                                 </div>
@@ -185,7 +185,7 @@ $result = $conn->query($sql);
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </a>
+                                            </div>
                                         </div>";
                                     }
                                 } else {
