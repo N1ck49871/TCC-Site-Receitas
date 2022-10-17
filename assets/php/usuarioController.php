@@ -2,11 +2,11 @@
 include_once "conexao.php";
 
 
-// $name = $_POST['nameUser'];
-// $email = $_POST['email'];
-// $pwd = $_POST['password'];
+ $name = $_POST['nameUser'];
+ $email = $_POST['email'];
+ $pwd = $_POST['password'];
 
-// $dados[] = array($name, $email, $pwd); 
+ $dados[] = array($name, $email, $pwd); 
 
 
 class usuarioController{
@@ -22,11 +22,13 @@ class usuarioController{
 
     }
 
-    // public function cadastrar($email, $nomeUsuario, $name ){
-    //     $dados[0] = $name;
-    //     $dados[1] = $email;
-    
-    // }
+     public function cadastrar($name ,$email, $pwd ){
+        $conn = new Conexao();
+        $conn = $conn->conexao();
+        $stmt = $conn->prepare("INSERT INTO `usuario` (`idUsuario`, `nomeUsuario`, `emailUsuario`, `senhaUsuario`, `idCategoriaFK`) VALUES (NULL, ".$dados[0].",".$dados[1].",".$dados[2].");
+        $result = $stmt->execute();
+        return $result;
+     }
 
 
 
