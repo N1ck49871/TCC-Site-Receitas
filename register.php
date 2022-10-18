@@ -20,7 +20,7 @@ session_start();
     <body>
         
             <div class="container" id="container">
-                <form id="formulario" action="" method="GET" name="formulario">
+                <form id="formulario" action="assets/php/usuarioController.php" method="POST" name="formulario">
                     <div class="loginInputs">
                         <header>
                             <h1>Cadastro</h1>

@@ -2,12 +2,6 @@
 include_once "conexao.php";
 
 
- $name = $_POST['nameUser'];
- $email = $_POST['email'];
- $pwd = $_POST['password'];
- $cat = $_POST['categoria'];
-
-
 
 class usuarioController{
 
@@ -22,10 +16,14 @@ class usuarioController{
 
     }
 
-     public function cadastrar($name ,$email, $pwd,$cat ){
+     public function cadastrar($dados){
         $conn = new Conexao();
         $conn = $conn->conexao();
-        $stmt = $conn->prepare("INSERT INTO `usuario` (`idUsuario`, `nomeUsuario`, `emailUsuario`, `senhaUsuario`, `idCategoriaFK`) VALUES (NULL, ".$name.",".$email.",".$pwd.",".$cat.")");
+        $stmt = $conn->prepare("INSERT INTO `usuario` (`idUsuario`, `nomeUsuario`, `emailUsuario`, `senhaUsuario`, `idCategoriaFK`) VALUES (NULL, :eusername, :eemail, :esenha, :ecategoria);");
+        $stmt->bindParam(':eusername', $dados['nameUser']);
+        $stmt->bindParam(':eemail',$dados['email']);
+        $stmt->bindParam(':esenha',  $dados['senha']);
+        $stmt->bindParam(':ecategoria', $dados['categoria']);
         $result = $stmt->execute();
         return $result;
      }
