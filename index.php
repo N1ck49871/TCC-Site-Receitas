@@ -34,7 +34,7 @@ session_start();
                                             <img src="./assets/img/iconUserModal.png" alt="">
                                         </div>
                                     </a>
-                                    <a href="#">
+                                    <a href="assets/php/logout.php">
                                         <span>Sair da conta</span>
                                         <div class="img">
                                         <img src="./assets/img/iconClose.png" alt="">

@@ -1,6 +1,24 @@
 <?php
-include "./assets/php/conexao.php";
+include_once "./assets/php/conexao.php";
+include_once 'assets/php/usuarioController.php';
 session_start();
+
+$user = new usuarioController();
+
+if (isset($_POST['enviar'])) {
+    $email = trim($_POST['email']);
+    $senha = trim($_POST['pswrd']);
+    if ($user->login($email, $senha)) {
+        header('Location: index.php');
+        exit;
+    }else{
+        echo "<META HTTP-EQUIV=REFRESH CONTENT = '0;URL= login.php'>
+                <script type=\"text/javascript\">
+                    alert(\"Senha ou email incorretos!\");
+                </script>
+            ";
+    }
+}
 ?>
 
 
@@ -22,20 +40,20 @@ session_start();
             </header>
             <form action="" method="POST">
                 <div class="input-field">
-                    <input type="text" required>
-                    <label>Email ou nome de usuário</label>
+                    <input type="text" name="email" required>
+                    <label>Email</label>
                 </div>
                 <div class="input-field">
-                    <input class="pswrd" type="password" required>
+                    <input class="pswrd" name="pswrd" type="password" required>
                     <!-- <span class="show">MOSTRAR</span> -->
                      <span class="material-symbols-rounded show" id="show">visibility</span>
                     <label>Senha</label>
                 </div>
                 <div class="button">
-                    <input value="CONECTAR" type="submit">
+                    <input value="CONECTAR" name="enviar" type="submit">
                 </div>
                 <div class="signup">
-                    Não tem conta? <a href="register.html">Inscreva-se</a>
+                    Não tem conta? <a href="register.php">Inscreva-se</a>
                 </div>
                 
             </form>
