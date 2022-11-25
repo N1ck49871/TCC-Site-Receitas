@@ -4,403 +4,881 @@ include_once "./assets/php/receitaController.php";
 include_once "./assets/php/usuarioController.php";
 
 session_start();
+
+$idCategoriaFKK;
+$logout = new usuarioController();
 ?>
 
 
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>HomeMadeGourmet</title>
-        <link rel="stylesheet" href="./assets/css/index.css">
-        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-        <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
-        <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-        <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
-    </head>
-    <body>
-        <div class="container">
-            <nav class="recipeSearch">
-                <form action="teste.php" name="formSearch" method="GET" class="formSearch">
-                        <div class="navBar">
-                            <div class="modal-perfil">
-                                <div class="IconeUsuario">
-                                    <a href="#" class="menuIcon"><img src="./assets/img/iconUser.png" alt=""></i></a>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeMadeGourmet</title>
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="recipeSearch">
+            <form action="index.php" name="formSearch" method="GET" class="formSearch">
+                <div class="navBar">
+                    <div class="modal-perfil" id="btnModal">
+                        <div class="IconeUsuario">
+                            <a href="#" class="menuIcon"><img src="./assets/img/iconUser.png" alt="Icone de usuario"></i></a>
+                        </div>
+                        <div class="modal" id="modal">
+                            <a href="profile.php">
+                                <span>Alterar Informações</span>
+                                <div class="img">
+                                    <img src="./assets/img/iconUserModal.png" alt="">
                                 </div>
-                                <div class="modal">
-                                    <a href="#">
-                                        <span>Alterar Informações</span>
-                                        <div class="img">
-                                            <img src="./assets/img/iconUserModal.png" alt="">
+                            </a>
+                            <a href="./assets/php/logout.php">
+                                <span>Sair da conta</span>
+                                <div class="img">
+                                    <img src="./assets/img/iconClose.png" alt="">
+                                    <!-- <img src="./assets/img/iconClose.png" alt=""> -->
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+
+
+                    <div class="searchBar">
+                        <input class="searchControl" name="pesquisa" type="search" placeholder="Digite o ingrediente da sua receita ou selecione a categoria pra filtrar">
+                        <button class="searchBtn" type="submit" name="buscar">
+                            <i class="fas fa-search"></i>
+                        </button>
+
+                    </div>
+                </div>
+                <div class="main-container" id="main-container">
+                    <div class="radio-buttons">
+                        <label class="custom-radio col-a">
+                            <input type="radio" name="categoriaReceita" value="1">
+                            <span class="radio-btn">
+                                <i class="las la-check-circle"></i>
+                                <div class="recipe-icon">
+                                    <img src="./assets/img/sushiIcone.png" />
+                                    <h3>Frutos do Mar</h3>
+                                </div>
+                            </span>
+                        </label>
+
+                        <label class="custom-radio col-b">
+                            <input type="radio" name="categoriaReceita" value="2">
+                            <span class="radio-btn">
+                                <i class="las la-check-circle"></i>
+                                <div class="recipe-icon">
+                                    <img src="./assets/img/massaIcone.png" />
+                                    <h3>Massas</h3>
+                                </div>
+                            </span>
+                        </label>
+
+                        <label class="custom-radio col-c">
+                            <input type="radio" name="categoriaReceita" value="3">
+                            <span class="radio-btn"><i class="las la-check-circle"></i>
+                                <div class="recipe-icon">
+                                    <img src="./assets/img/veganoIcone.png" />
+                                    <h3>Veganas</h3>
+                                </div>
+                            </span>
+                        </label>
+
+                        <label class="custom-radio col-d">
+                            <input type="radio" name="categoriaReceita" value="4">
+                            <span class="radio-btn"><i class="las la-check-circle"></i>
+                                <div class="recipe-icon">
+                                    <img src="./assets/img/croassaIcone.png" />
+                                    <h3>Salgados</h3>
+                                </div>
+                            </span>
+                        </label>
+
+                        <label class="custom-radio col-f">
+                            <input type="radio" name="categoriaReceita" value="5">
+                            <span class="radio-btn"><i class="las la-check-circle"></i>
+                                <div class="recipe-icon">
+                                    <img src="./assets/img/boloIcone.png" />
+                                    <h3>Doces</h3>
+                                </div>
+                            </span>
+                        </label>
+
+                        <label class="custom-radio col-g">
+                            <input type="radio" name="categoriaReceita" value="6">
+                            <span class="radio-btn"><i class="las la-check-circle"></i>
+                                <div class="recipe-icon">
+                                    <img src="./assets/img/carneIcone.png" />
+                                    <h3>Carnes</h3>
+                                </div>
+                            </span>
+                        </label>
+
+                    </div>
+                </div>
+            </form>
+        </nav>
+
+        <div class="recipeResults">
+            <h2>SUA PESQUISA</h2>
+            <div class="receitasCentro">
+                <div class="receitas" id="receitas">
+                    <?php
+                    if (isset($_GET['buscar'])) {
+                        if (empty($_GET['categoriaReceita']) && empty($_GET['pesquisa'])) {
+                            echo '<script>alert("Tente escrever algo na barra de pesquisa ou selecionar uma categoria")</script>';
+                        } 
+                        elseif (!empty($_GET['categoriaReceita']) && empty($_GET['pesquisa'])) {
+                            $idCategoriaFKK = $_GET['categoriaReceita'];
+                            $receitas = ReceitaController::getRecipesByCategory($idCategoriaFKK);
+
+                            if (empty($receitas)) {
+                                echo '<script>alert("Não foi possível encontrar receitas nessa categoria :( ")</script>';
+                            } else {
+                                foreach ($receitas as $receita) {
+
+
+                                    if ($receita[3] == 1) {
+                                        $receita[3] = "Frutos do Mar";
+                                    } else if ($receita[3] == 2) {
+                                        $receita[3] = "Massas";
+                                    } else if ($receita[3] == 3) {
+                                        $receita[3] = "Veganas";
+                                    } else if ($receita[3] == 4) {
+                                        $receita[3] = "Salgados";
+                                    } else if ($receita[3] == 5) {
+                                        $receita[3] = "Doces";
+                                    } else if ($receita[3] == 6) {
+                                        $receita[3] = "Carnes";
+                                    };
+
+
+                                    echo '   
+                                <div class="itemReceita">
+                                    <div class="btnAbrirReceita  id=' . $receita[0] . '">
+                                        <div class="imgReceita" id=' . $receita[0] . '>
+                                            <img src="./assets/img/food.jpg" id=' . $receita[0] . '>
                                         </div>
-                                    </a>
-                                    <a href="assets/php/logout.php">
-                                        <span>Sair da conta</span>
-                                        <div class="img">
-                                        <img src="./assets/img/iconClose.png" alt="">
-                                            <!-- <img src="./assets/img/iconClose.png" alt=""> -->
+                                        <div class="alignItems" id=' . $receita[0] . '>
+                                            <div class="nomeReceita" id=' . $receita[0] . '>
+                                                <h3 id=' . $receita[0] . '>' . $receita[1] . '</h3>
+                                            </div>
+                                            <div class="infoAdicionaisReceita" id=' . $receita[0] . '>
+                                                <div class="tempoPreparoReceita" id=' . $receita[0] . '>
+                                                    <img src="./assets/img/garfoFaca.png" alt="IconeGarfoFaca" id=' . $receita[0] . '>
+                                                    <p id=' . $receita[0] . '>
+                                                    ' . $receita[2] . '
+                                                    </p>
+                                                </div>
+                                                <div class="categoriaReceita">
+                                                    <img src="./assets/img/categoriaIcone.png" alt="iconeCategoria" id=' . $receita[0] . '>
+                                                    <p id=' . $receita[0] . '> 
+                                                        ' . $receita[3] . '
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </a>
-                                </div>
-                            </div>
-
-
-
-                            <div class="searchBar">
-                                <input class="searchControl" name="pesquisa" type="search" placeholder="Digite o ingrediente da sua receita ou Selecione a receita pra filtrar">
-                                <button class="searchBtn"type="submit">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                                
-                            </div>
-                        </div>
-                        <div class="main-container" id="main-container">
-                                <div class="radio-buttons">
-                                    <label class="custom-radio col-a">
-                                        <input type="radio" name="radio" value="1">
-                                        <span class="radio-btn">
-                                            <i class="las la-check-circle"></i>
-                                            <div class="recipe-icon">
-                                                <img src="./assets/img/sushiIcone.png"/>
-                                                <h3>Frutos do Mar</h3>
-                                            </div>
-                                        </span>
-                                    </label>
-
-                                    <label class="custom-radio col-b">
-                                        <input type="radio" name="radio" value="2">
-                                        <span class="radio-btn">
-                                            <i class="las la-check-circle"></i>
-                                            <div class="recipe-icon">
-                                                <img src="./assets/img/massaIcone.png"/>
-                                                <h3>Massas</h3>
-                                            </div>
-                                        </span>
-                                    </label>
-
-                                    <label class="custom-radio col-c">
-                                        <input type="radio" name="radio" value="3">
-                                        <span class="radio-btn"><i class="las la-check-circle"></i>
-                                            <div class="recipe-icon">
-                                                <img src="./assets/img/veganoIcone.png"/>
-                                                <h3>Veganas</h3>
-                                            </div>
-                                        </span>
-                                    </label>
-
-                                    <label class="custom-radio col-d">
-                                        <input type="radio" name="radio" value="4">
-                                        <span class="radio-btn"><i class="las la-check-circle"></i>
-                                            <div class="recipe-icon">
-                                                <img src="./assets/img/croassaIcone.png"/>
-                                                <h3>Salgados</h3>
-                                            </div>
-                                        </span>
-                                    </label>
-
-                                    <label class="custom-radio col-f">
-                                        <input type="radio" name="radio" value="5">
-                                        <span class="radio-btn"><i class="las la-check-circle"></i>
-                                            <div class="recipe-icon">
-                                                <img src="./assets/img/boloIcone.png"/>
-                                                <h3>Doces</h3>
-                                            </div>
-                                        </span>
-                                    </label>
-
-                                    <label class="custom-radio col-g">
-                                        <input type="radio" name="radio" value="6">
-                                        <span class="radio-btn"><i class="las la-check-circle"></i>
-                                            <div class="recipe-icon">
-                                                <img src="./assets/img/carneIcone.png"/>
-                                                <h3>Carnes</h3>
-                                            </div>
-                                        </span>
-                                    </label>
-
-                                </div>
-                        </div>
-                </form>
-            </nav>
-
-            <div class="recipeResults">
-                <h2>SUA PESQUISA</h2>
-                <div class="receitasCentro">
-                    <div class="receitas" id="receitas">
-                        <div class="itemReceita">
-                            <a href="#" class="btnAbrirReceita">
-                                <div class="imgReceita">
-                                    <img src="./assets/img/food.jpg" alt="">
-                                </div>
-                                <div class="nomeReceita">
-                                    <h3>Mac And Cheese</h3>
-                                </div>
-                                <div class="infoAdicionaisReceita">
-                                    <div class="tempoPreparoReceita">
-                                        <img src="./assets/img/garfoFaca.png" alt="IconeGarfoFaca">
-                                        <p> 45 Min</p>
                                     </div>
-                                    <div class="categoriaReceita">
-                                        <img src="./assets/img/categoriaIcone.png" alt="iconeCategoria">
-                                        <p>
-                                            Massas
-                                        </p>
+                                </div>';
+                                }
+                            }
+                        } 
+                        elseif (!empty($_GET['pesquisa']) && empty($_GET['categoriaReceita'])) {
+
+                            $search = $_GET['pesquisa'];
+
+                            $receitas = ReceitaController::getRecipesBySearch($search);
+
+                            if (empty($receitas)) {
+                                echo '<script>alert("Não foi possível encontrar receitas :(")</script>';
+                            } else {
+                                foreach ($receitas as $receita) {
+
+
+                                    if ($receita[3] == 1) {
+                                        $receita[3] = "Frutos do Mar";
+                                    } else if ($receita[3] == 2) {
+                                        $receita[3] = "Massas";
+                                    } else if ($receita[3] == 3) {
+                                        $receita[3] = "Veganas";
+                                    } else if ($receita[3] == 4) {
+                                        $receita[3] = "Salgados";
+                                    } else if ($receita[3] == 5) {
+                                        $receita[3] = "Doces";
+                                    } else if ($receita[3] == 6) {
+                                        $receita[3] = "Carnes";
+                                    };
+
+
+                                    echo '   
+                                    <div class="itemReceita">
+                                        <div class="btnAbrirReceita  id=' . $receita[0] . '">
+                                            <div class="imgReceita" id=' . $receita[0] . '>
+                                                <img src="./assets/img/food.jpg" id=' . $receita[0] . '>
+                                            </div>
+                                            <div class="alignItems" id=' . $receita[0] . '>
+                                                <div class="nomeReceita" id=' . $receita[0] . '>
+                                                    <h3 id=' . $receita[0] . '>' . $receita[1] . '</h3>
+                                                </div>
+                                                <div class="infoAdicionaisReceita" id=' . $receita[0] . '>
+                                                    <div class="tempoPreparoReceita" id=' . $receita[0] . '>
+                                                        <img src="./assets/img/garfoFaca.png" alt="IconeGarfoFaca" id=' . $receita[0] . '>
+                                                        <p id=' . $receita[0] . '>
+                                                        ' . $receita[2] . '
+                                                        </p>
+                                                    </div>
+                                                    <div class="categoriaReceita">
+                                                        <img src="./assets/img/categoriaIcone.png" alt="iconeCategoria" id=' . $receita[0] . '>
+                                                        <p id=' . $receita[0] . '> 
+                                                            ' . $receita[3] . '
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>';
+                                }
+                            }
+                        } 
+                        else {
+                            $search = $_GET['pesquisa'];
+                            $idCategoriaFKK = $_GET['categoriaReceita'];
+
+                            $receitas = ReceitaController::getRecipesBySearchAndCategory($search, $idCategoriaFKK);
+                            
+                            if (empty($receitas)) {
+                                echo '<script>alert("Não foi possível encontrar receitas :(")</script>';
+                            } 
+                            else {
+
+                                foreach ($receitas as $receita) {
+
+
+                                    if ($receita[3] == 1) {
+                                        $receita[3] = "Frutos do Mar";
+                                    } else if ($receita[3] == 2) {
+                                        $receita[3] = "Massas";
+                                    } else if ($receita[3] == 3) {
+                                        $receita[3] = "Veganas";
+                                    } else if ($receita[3] == 4) {
+                                        $receita[3] = "Salgados";
+                                    } else if ($receita[3] == 5) {
+                                        $receita[3] = "Doces";
+                                    } else if ($receita[3] == 6) {
+                                        $receita[3] = "Carnes";
+                                    };
+
+
+                                    echo '   
+                                    <div class="itemReceita">
+                                        <div class="btnAbrirReceita  id=' . $receita[0] . '">
+                                            <div class="imgReceita" id=' . $receita[0] . '>
+                                                <img src="./assets/img/food.jpg" id=' . $receita[0] . '>
+                                            </div>
+                                            <div class="alignItems" id=' . $receita[0] . '>
+                                                <div class="nomeReceita" id=' . $receita[0] . '>
+                                                    <h3 id=' . $receita[0] . '>' . $receita[1] . '</h3>
+                                                </div>
+                                                <div class="infoAdicionaisReceita" id=' . $receita[0] . '>
+                                                    <div class="tempoPreparoReceita" id=' . $receita[0] . '>
+                                                        <img src="./assets/img/garfoFaca.png" alt="IconeGarfoFaca" id=' . $receita[0] . '>
+                                                        <p id=' . $receita[0] . '>
+                                                        ' . $receita[2] . '
+                                                        </p>
+                                                    </div>
+                                                    <div class="categoriaReceita">
+                                                        <img src="./assets/img/categoriaIcone.png" alt="iconeCategoria" id=' . $receita[0] . '>
+                                                        <p id=' . $receita[0] . '> 
+                                                            ' . $receita[3] . '
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>';
+                                }
+                            }
+                        }
+                    } else {
+                        $receitas = ReceitaController::allReceitas();
+                        foreach ($receitas as $receita) {
+
+
+                            if ($receita[3] == 1) {
+                                $receita[3] = "Frutos do Mar";
+                            } else if ($receita[3] == 2) {
+                                $receita[3] = "Massas";
+                            } else if ($receita[3] == 3) {
+                                $receita[3] = "Veganas";
+                            } else if ($receita[3] == 4) {
+                                $receita[3] = "Salgados";
+                            } else if ($receita[3] == 5) {
+                                $receita[3] = "Doces";
+                            } else if ($receita[3] == 6) {
+                                $receita[3] = "Carnes";
+                            };
+
+
+                            echo '   
+                            <div class="itemReceita">
+                                <div class="btnAbrirReceita  id=' . $receita[0] . '">
+                                    <div class="imgReceita" id=' . $receita[0] . '>
+                                        <img src="./assets/img/food.jpg" id=' . $receita[0] . '>
+                                    </div>
+                                    <div class="alignItems" id=' . $receita[0] . '>
+                                        <div class="nomeReceita" id=' . $receita[0] . '>
+                                            <h3 id=' . $receita[0] . '>' . $receita[1] . '</h3>
+                                        </div>
+                                        <div class="infoAdicionaisReceita" id=' . $receita[0] . '>
+                                            <div class="tempoPreparoReceita" id=' . $receita[0] . '>
+                                                <img src="./assets/img/garfoFaca.png" alt="IconeGarfoFaca" id=' . $receita[0] . '>
+                                                <p id=' . $receita[0] . '>
+                                                ' . $receita[2] . '
+                                                </p>
+                                            </div>
+                                            <div class="categoriaReceita">
+                                                <img src="./assets/img/categoriaIcone.png" alt="iconeCategoria" id=' . $receita[0] . '>
+                                                <p id=' . $receita[0] . '> 
+                                                    ' . $receita[3] . '
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </a>
-                        </div>
-                        <div class="itemReceita">
-                            <a href="#" class="btnAbrirReceita">
-                                <div class="imgReceita">
-                                    <img src="./assets/img/food.jpg" alt="">
+                            </div>';
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+
+        <?php
+        if (isset($_GET['buscar'])) {
+            if (empty($_GET['categoriaReceita']) && empty($_GET['pesquisa'])) {
+            } 
+            elseif (!empty($_GET['categoriaReceita']) && empty($_GET['pesquisa'])) {
+                $idCategoriaFKK = $_GET['categoriaReceita'];
+                $receitas = ReceitaController::allDetailsReceitasByCategory($idCategoriaFKK);
+                foreach ($receitas as $receita) {
+
+                    if ($receita[19] == 1) {
+                        $receita[19] = "Frutos do Mar";
+                    } else if ($receita[19] == 2) {
+                        $receita[19] = "Massas";
+                    } else if ($receita[19] == 3) {
+                        $receita[19] = "Veganas";
+                    } else if ($receita[19] == 4) {
+                        $receita[19] = "Salgados";
+                    } else if ($receita[19] == 5) {
+                        $receita[19] = "Doces";
+                    } else if ($receita[19] == 6) {
+                        $receita[19] = "Carnes";
+                    };
+
+
+                    $ingrediente1 =  empty($receita[6]) === true ? "Não há mais ingredientes" :  $receita[6];
+                    $ingrediente2 =  empty($receita[7]) === true ? "Não há mais ingredientes" :  $receita[7];
+                    $ingrediente3 =  empty($receita[8]) === true ? "Não há mais ingredientes" :  $receita[8];
+                    $ingrediente4 =  empty($receita[9]) === true ? "Não há mais ingredientes" :  $receita[9];
+                    $ingrediente5 =  empty($receita[10]) === true ? "Não há mais ingredientes" :  $receita[10];
+                    $ingrediente6 =  empty($receita[11]) === true ? "Não há mais ingredientes" :  $receita[11];
+                    $ingrediente7 =  empty($receita[12]) === true ? "Não há mais ingredientes" :  $receita[12];
+                    $ingrediente8 =  empty($receita[13]) === true ? "Não há mais ingredientes" :  $receita[13];
+                    $ingrediente9 =  empty($receita[14]) === true ? "Não há mais ingredientes" :  $receita[14];
+                    $ingrediente10 = empty($receita[15]) === true ? "Não há mais ingredientes" :  $receita[15];
+                    $ingrediente11 = empty($receita[16]) === true ? "Não há mais ingredientes" :  $receita[16];
+                    $ingrediente12 = empty($receita[17]) === true ? "Não há mais ingredientes" :  $receita[17];
+
+
+                    $modoDePreparo =  explode(".", $receita[18]);
+                    $string = "";
+
+                    for ($i = 0; $i < count($modoDePreparo); $i++) {
+                        $numero = $i;
+                        $br = "<br>";
+                        if ($i < count($modoDePreparo) - 1) {
+                            $string .= $numero . ". " . $modoDePreparo[$i] . " " . $br;
+                        }
+                    }
+
+                    echo '
+                        <div class="detalhesReceita" id="detalhesReceita' . $receita[0] . '">
+                            <div class="col-left">
+                                <div class="videoReceita">
+                                    ' . $receita[5] . '
                                 </div>
-                                <div class="nomeReceita">
-                                    <h3>Mac And Cheese</h3>
-                                </div>
-                                <div class="infoAdicionaisReceita">
-                                    <div class="tempoPreparoReceita">
-                                        <img src="./assets/img/garfoFaca.png" alt="IconeGarfoFaca">
-                                        <p> 45 Min</p>
-                                    </div>
-                                    <div class="categoriaReceita">
-                                        <img src="./assets/img/categoriaIcone.png" alt="iconeCategoria">
-                                        <p>
-                                            Massas
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="itemReceita">
-                            <a href="#" class="btnAbrirReceita">
-                                <div class="imgReceita">
-                                    <img src="./assets/img/food.jpg" alt="">
-                                </div>
-                                <div class="nomeReceita">
-                                    <h3>Mac And Cheese</h3>
-                                </div>
-                                <div class="infoAdicionaisReceita">
-                                    <div class="tempoPreparoReceita">
-                                        <img src="./assets/img/garfoFaca.png" alt="IconeGarfoFaca">
-                                        <p> 45 Min</p>
-                                    </div>
-                                    <div class="categoriaReceita">
-                                        <img src="./assets/img/categoriaIcone.png" alt="iconeCategoria">
-                                        <p>
-                                            Massas
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="itemReceita">
-                        <a href="#" class="btnAbrirReceita">
-                            <div class="imgReceita">
-                                <img src="./assets/img/food.jpg" alt="">
-                            </div>
-                            <div class="nomeReceita">
-                                <h3>Mac And Cheese</h3>
-                            </div>
-                            <div class="infoAdicionaisReceita">
-                                <div class="tempoPreparoReceita">
-                                    <img src="./assets/img/garfoFaca.png" alt="IconeGarfoFaca">
-                                    <p> 45 Min</p>
-                                </div>
-                                <div class="categoriaReceita">
-                                    <img src="./assets/img/categoriaIcone.png" alt="iconeCategoria">
+                                <div class="ingredientesReceita">
+                                    <h2>Ingredientes</h2>
                                     <p>
-                                        Massas
+                                        -> ' . $ingrediente1 . '
+                                        <br>
+                                        -> ' . $ingrediente2 . '
+                                        <br>
+                                        -> ' . $ingrediente3 . '
+                                        <br>
+                                        -> ' . $ingrediente4 . ' 
+                                        <br>
+                                        -> ' . $ingrediente5 . ' 
+                                        <br>
+                                        -> ' . $ingrediente6 . '
+                                        <br>
+                                        -> ' . $ingrediente7 . '
+                                        <br>
+                                        -> ' . $ingrediente8 . '
+                                        <br>
+                                        -> ' . $ingrediente9 . '
+                                        <br>
+                                        -> ' . $ingrediente10 . '
+                                        <br>
+                                        -> ' . $ingrediente11 . '
+                                        <br>
+                                        -> ' . $ingrediente12 . '
                                     </p>
                                 </div>
                             </div>
-                        </a>
-                        </div>
-                        <div class="itemReceita">
-                            <a href="#" class="btnAbrirReceita">
-                                <div class="imgReceita">
-                                    <img src="./assets/img/food.jpg" alt="">
+                            <div class="col-right">
+                                <div class="btnCloseAndHeader">
+                                    <h1>' . $receita[2] . '</h1>
+                                    <a href="#"><i class="las la-times btnClose" id="' . $receita[0] . '"></i></a>
+                
                                 </div>
-                                <div class="nomeReceita">
-                                    <h3>Mac And Cheese</h3>
-                                </div>
-                                <div class="infoAdicionaisReceita">
-                                    <div class="tempoPreparoReceita">
-                                        <img src="./assets/img/garfoFaca.png" alt="IconeGarfoFaca">
-                                        <p> 45 Min</p>
+                                <div class="informacoesReceita">
+                                    <div class="divInfo">
+                                        <img src="./assets/img/categoriaIcon.png" alt="">
+                                        <label>' . $receita[19] . '</label>
                                     </div>
-                                    <div class="categoriaReceita">
-                                        <img src="./assets/img/categoriaIcone.png" alt="iconeCategoria">
-                                        <p>
-                                            Massas
-                                        </p>
+                                    <div class="divInfo">
+                                        <img src="./assets/img/tempoPreparoIcon.png" alt="">
+                                        <label>' . $receita[4] . '</label>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="itemReceita">
-                            <a href="#" class="btnAbrirReceita">
-                                <div class="imgReceita">
-                                    <img src="./assets/img/food.jpg" alt="">
-                                </div>
-                                <div class="nomeReceita">
-                                    <h3>Mac And Cheese</h3>
-                                </div>
-                                <div class="infoAdicionaisReceita">
-                                    <div class="tempoPreparoReceita">
-                                        <img src="./assets/img/garfoFaca.png" alt="IconeGarfoFaca">
-                                        <p> 45 Min</p>
+                                    <div class="divInfoExclusiva">
+                                        <img src="./assets/img/porcoesIcon.png" alt="">
+                                        <label>' . $receita[3] . ' Porções</label>
                                     </div>
-                                    <div class="categoriaReceita">
-                                        <img src="./assets/img/categoriaIcone.png" alt="iconeCategoria">
-                                        <p>
-                                            Massas
-                                        </p>
+                                    <div class="divInfo">
+                                        <img src="./assets/img/gastoCaloricoIcon.png" alt="">
+                                        <label>' . $receita[3] . ' cal</label>
                                     </div>
+                
+                
                                 </div>
-                            </a>
-                        </div>
-                        <div class="itemReceita">
-                            <a href="#" class="btnAbrirReceita">
-                                <div class="imgReceita">
-                                    <img src="./assets/img/food.jpg" alt="">
-                                </div>
-                                <div class="nomeReceita">
-                                    <h3>Mac And Cheese</h3>
-                                </div>
-                                <div class="infoAdicionaisReceita">
-                                    <div class="tempoPreparoReceita">
-                                        <img src="./assets/img/garfoFaca.png" alt="IconeGarfoFaca">
-                                        <p> 45 Min</p>
+                
+                                <div class="modoPreparoReceita">
+                                    <div class="modoPreparoTitulo">
+                                        <div class="imgModoPreparo">
+                                            <img src="./assets/img/modoPreparoIcon.png" alt="">
+                
+                                        </div>
+                                        <h2>Modo de Preparo</h2>
                                     </div>
-                                    <div class="categoriaReceita">
-                                        <img src="./assets/img/categoriaIcone.png" alt="iconeCategoria">
-                                        <p>
-                                            Massas
-                                        </p>
-                                    </div>
+                                    <p>
+                                        ' . $string . '  
+                                    </p>
+                
                                 </div>
-                            </a>
-                        </div>
-                        <div class="itemReceita">
-                            <a href="#" class="btnAbrirReceita">
-                                <div class="imgReceita">
-                                    <img src="./assets/img/food.jpg" alt="">
-                                </div>
-                                <div class="nomeReceita">
-                                    <h3>Mac And Cheese</h3>
-                                </div>
-                                <div class="infoAdicionaisReceita">
-                                    <div class="tempoPreparoReceita">
-                                        <img src="./assets/img/garfoFaca.png" alt="IconeGarfoFaca">
-                                        <p> 45 Min</p>
-                                    </div>
-                                    <div class="categoriaReceita">
-                                        <img src="./assets/img/categoriaIcone.png" alt="iconeCategoria">
-                                        <p>
-                                            Massas
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="detalhesReceita" id="detalhesReceita">
-                <div class="col-left">
-                    <div class="videoReceita">
-                        <img src="./assets/img/food.jpg" alt="">
-                    </div>
-                    <div class="ingredientesReceita">
-                        <h2>Ingredientes</h2>
-                        <p>
-                            -> 300 gr de macarrão parafuso ou outra massa curta de sua preferência
-                            <br>
-                            -> 1 1/2 xícaras (chá) de leite
-                            <br>
-                            -> 2 colheres (sopa) de farinha de trigo
-                            <br>
-                            -> 1 colher (sopa) de margarina
-                            <br>
-                            -> 1 unidade de alho picadinho
-                            <br>
-                            -> 1 xícara (chá) de queijo ralado (gorgonzola, gruyère, cheddar)
-                            <br>
-                            -> Noz-moscada a gosto
-                            <br>
-                            -> Pimenta-do-reino branca e sal a gosto
-                            <br>
-                            -> Parmesão para gratinar a gosto
-                        </p>
-                    </div>
-                </div>
-                <div class="col-right">
-                    <div class="btnCloseAndHeader">
-                        <h1>Mac And Cheese Americano</h1>
-                        <a href="#"><i class="las la-times" id="btnClose"></i></a>
-
-                    </div>
-                    <div class="informacoesReceita">
-                        <div class="divInfo">
-                            <img src="./assets/img/categoriaIcon.png" alt="">
-                            <label>Massa</label>
-                        </div>
-                        <div class="divInfo">
-                            <img src="./assets/img/tempoPreparoIcon.png" alt="">
-                            <label>45 Min</label>
-                        </div>
-                        <div class="divInfoExclusiva">
-                            <img src="./assets/img/porcoesIcon.png" alt="">
-                            <label>6 Porções</label>
-                        </div>
-                        <div class="divInfo">
-                            <img src="./assets/img/gastoCaloricoIcon.png" alt="">
-                            <label>356 cal</label>
-                        </div>
-
-
-                    </div>
-                    
-                    <div class="modoPreparoReceita">
-                        <div class="modoPreparoTitulo">
-                            <div class="imgModoPreparo">
-                                <img src="./assets/img/modoPreparoIcon.png" alt="">
-                                
+                
                             </div>
-                            <h2>Modo de Preparo</h2>
                         </div>
-                        <p>
-                            1. Preaqueça o forno em temperatura média, se tiver o gratinador você pode usar apenas esta função.
-                            <br>
-                            2. Numa panela derreta a margarina e doure o alho.
-                            <br>
-                            3. Junte a farinha de trigo e mexa bem até formar uma pasta grossa.
-                            <br>
-                            4. Comece pingando o leite aos poucos, sem parar de mexer.
-                            <br>
-                            5. Enquanto isso coloque a massa para cozinhar até que esteja al dente.
-                            <br>
-                            6. Depois de adicionar todo o leite na panela reduza o fogo e mexa sem parar até começar a borbulhar.
-                            <br>
-                            7. Junte os queijos e cozinhe por 8 minutos, mexendo de vez em quando.
-                            <br>
-                            8. Se gostar de um molho mais líquido basta acrescentar mais leite, sempre um pouco por vez.
-                            <br>
-                            9. Quando o molho estiver bem encorpado e os queijos derretidos tempere com noz moscada, pimenta e sal a gosto.
-                            <br>
-                            10. Escorra o macarrão e coloque-o dentro da panela do molho (se a sua panela puder ir ao forno) misturando bem, ou transfira tudo para um refratário.
-                            <br>
-                            11. Cubra o macarrão com queijo parmesão e leve para gratinar por 10 minutos, ou até que a superfície esteja levemente dourada.
-                        </p>
+                        ';
+                }
+            } 
+            elseif (!empty($_GET['pesquisa']) && empty($_GET['categoriaReceita'])) {
+                $search = $_GET['pesquisa'];
+                $receitas = ReceitaController::allDetailsReceitasBySearch($search);
 
+                foreach ($receitas as $receita) {
+
+                    if ($receita[19] == 1) {
+                        $receita[19] = "Frutos do Mar";
+                    } else if ($receita[19] == 2) {
+                        $receita[19] = "Massas";
+                    } else if ($receita[19] == 3) {
+                        $receita[19] = "Veganas";
+                    } else if ($receita[19] == 4) {
+                        $receita[19] = "Salgados";
+                    } else if ($receita[19] == 5) {
+                        $receita[19] = "Doces";
+                    } else if ($receita[19] == 6) {
+                        $receita[19] = "Carnes";
+                    };
+
+
+                    $ingrediente1 =  empty($receita[6]) === true ? "Não há mais ingredientes" :  $receita[6];
+                    $ingrediente2 =  empty($receita[7]) === true ? "Não há mais ingredientes" :  $receita[7];
+                    $ingrediente3 =  empty($receita[8]) === true ? "Não há mais ingredientes" :  $receita[8];
+                    $ingrediente4 =  empty($receita[9]) === true ? "Não há mais ingredientes" :  $receita[9];
+                    $ingrediente5 =  empty($receita[10]) === true ? "Não há mais ingredientes" :  $receita[10];
+                    $ingrediente6 =  empty($receita[11]) === true ? "Não há mais ingredientes" :  $receita[11];
+                    $ingrediente7 =  empty($receita[12]) === true ? "Não há mais ingredientes" :  $receita[12];
+                    $ingrediente8 =  empty($receita[13]) === true ? "Não há mais ingredientes" :  $receita[13];
+                    $ingrediente9 =  empty($receita[14]) === true ? "Não há mais ingredientes" :  $receita[14];
+                    $ingrediente10 = empty($receita[15]) === true ? "Não há mais ingredientes" :  $receita[15];
+                    $ingrediente11 = empty($receita[16]) === true ? "Não há mais ingredientes" :  $receita[16];
+                    $ingrediente12 = empty($receita[17]) === true ? "Não há mais ingredientes" :  $receita[17];
+
+
+                    $modoDePreparo =  explode(".", $receita[18]);
+                    $string = "";
+
+                    for ($i = 0; $i < count($modoDePreparo); $i++) {
+                        $numero = $i;
+                        $br = "<br>";
+                        if ($i < count($modoDePreparo) - 1) {
+                            $string .= $numero . ". " . $modoDePreparo[$i] . " " . $br;
+                        }
+                    }
+
+                    echo '
+                        <div class="detalhesReceita" id="detalhesReceita' . $receita[0] . '">
+                            <div class="col-left">
+                                <div class="videoReceita">
+                                    ' . $receita[5] . '
+                                </div>
+                                <div class="ingredientesReceita">
+                                    <h2>Ingredientes</h2>
+                                    <p>
+                                        -> ' . $ingrediente1 . '
+                                        <br>
+                                        -> ' . $ingrediente2 . '
+                                        <br>
+                                        -> ' . $ingrediente3 . '
+                                        <br>
+                                        -> ' . $ingrediente4 . ' 
+                                        <br>
+                                        -> ' . $ingrediente5 . ' 
+                                        <br>
+                                        -> ' . $ingrediente6 . '
+                                        <br>
+                                        -> ' . $ingrediente7 . '
+                                        <br>
+                                        -> ' . $ingrediente8 . '
+                                        <br>
+                                        -> ' . $ingrediente9 . '
+                                        <br>
+                                        -> ' . $ingrediente10 . '
+                                        <br>
+                                        -> ' . $ingrediente11 . '
+                                        <br>
+                                        -> ' . $ingrediente12 . '
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-right">
+                                <div class="btnCloseAndHeader">
+                                    <h1>' . $receita[2] . '</h1>
+                                    <a href="#"><i class="las la-times btnClose" id="' . $receita[0] . '"></i></a>
+                
+                                </div>
+                                <div class="informacoesReceita">
+                                    <div class="divInfo">
+                                        <img src="./assets/img/categoriaIcon.png" alt="">
+                                        <label>' . $receita[19] . '</label>
+                                    </div>
+                                    <div class="divInfo">
+                                        <img src="./assets/img/tempoPreparoIcon.png" alt="">
+                                        <label>' . $receita[4] . '</label>
+                                    </div>
+                                    <div class="divInfoExclusiva">
+                                        <img src="./assets/img/porcoesIcon.png" alt="">
+                                        <label>' . $receita[3] . ' Porções</label>
+                                    </div>
+                                    <div class="divInfo">
+                                        <img src="./assets/img/gastoCaloricoIcon.png" alt="">
+                                        <label>' . $receita[3] . ' cal</label>
+                                    </div>
+                
+                
+                                </div>
+                
+                                <div class="modoPreparoReceita">
+                                    <div class="modoPreparoTitulo">
+                                        <div class="imgModoPreparo">
+                                            <img src="./assets/img/modoPreparoIcon.png" alt="">
+                
+                                        </div>
+                                        <h2>Modo de Preparo</h2>
+                                    </div>
+                                    <p>
+                                        ' . $string . '  
+                                    </p>
+                
+                                </div>
+                
+                            </div>
+                        </div>
+                        ';
+                }
+            } 
+            else {
+                $idCategoriaFKK = $_GET['categoriaReceita'];
+                $search = $_GET['pesquisa'];
+                $receitas = ReceitaController::allDetailsReceitasBySearch($search);
+
+                foreach ($receitas as $receita) {
+
+                    if ($receita[19] == 1) {
+                        $receita[19] = "Frutos do Mar";
+                    } else if ($receita[19] == 2) {
+                        $receita[19] = "Massas";
+                    } else if ($receita[19] == 3) {
+                        $receita[19] = "Veganas";
+                    } else if ($receita[19] == 4) {
+                        $receita[19] = "Salgados";
+                    } else if ($receita[19] == 5) {
+                        $receita[19] = "Doces";
+                    } else if ($receita[19] == 6) {
+                        $receita[19] = "Carnes";
+                    };
+
+
+                    $ingrediente1 =  empty($receita[6]) === true ? "Não há mais ingredientes" :  $receita[6];
+                    $ingrediente2 =  empty($receita[7]) === true ? "Não há mais ingredientes" :  $receita[7];
+                    $ingrediente3 =  empty($receita[8]) === true ? "Não há mais ingredientes" :  $receita[8];
+                    $ingrediente4 =  empty($receita[9]) === true ? "Não há mais ingredientes" :  $receita[9];
+                    $ingrediente5 =  empty($receita[10]) === true ? "Não há mais ingredientes" :  $receita[10];
+                    $ingrediente6 =  empty($receita[11]) === true ? "Não há mais ingredientes" :  $receita[11];
+                    $ingrediente7 =  empty($receita[12]) === true ? "Não há mais ingredientes" :  $receita[12];
+                    $ingrediente8 =  empty($receita[13]) === true ? "Não há mais ingredientes" :  $receita[13];
+                    $ingrediente9 =  empty($receita[14]) === true ? "Não há mais ingredientes" :  $receita[14];
+                    $ingrediente10 = empty($receita[15]) === true ? "Não há mais ingredientes" :  $receita[15];
+                    $ingrediente11 = empty($receita[16]) === true ? "Não há mais ingredientes" :  $receita[16];
+                    $ingrediente12 = empty($receita[17]) === true ? "Não há mais ingredientes" :  $receita[17];
+
+
+                    $modoDePreparo =  explode(".", $receita[18]);
+                    $string = "";
+
+                    for ($i = 0; $i < count($modoDePreparo); $i++) {
+                        $numero = $i;
+                        $br = "<br>";
+                        if ($i < count($modoDePreparo) - 1) {
+                            $string .= $numero . ". " . $modoDePreparo[$i] . " " . $br;
+                        }
+                    }
+
+                    echo '
+                        <div class="detalhesReceita" id="detalhesReceita' . $receita[0] . '">
+                            <div class="col-left">
+                                <div class="videoReceita">
+                                    ' . $receita[5] . '
+                                </div>
+                                <div class="ingredientesReceita">
+                                    <h2>Ingredientes</h2>
+                                    <p>
+                                        -> ' . $ingrediente1 . '
+                                        <br>
+                                        -> ' . $ingrediente2 . '
+                                        <br>
+                                        -> ' . $ingrediente3 . '
+                                        <br>
+                                        -> ' . $ingrediente4 . ' 
+                                        <br>
+                                        -> ' . $ingrediente5 . ' 
+                                        <br>
+                                        -> ' . $ingrediente6 . '
+                                        <br>
+                                        -> ' . $ingrediente7 . '
+                                        <br>
+                                        -> ' . $ingrediente8 . '
+                                        <br>
+                                        -> ' . $ingrediente9 . '
+                                        <br>
+                                        -> ' . $ingrediente10 . '
+                                        <br>
+                                        -> ' . $ingrediente11 . '
+                                        <br>
+                                        -> ' . $ingrediente12 . '
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-right">
+                                <div class="btnCloseAndHeader">
+                                    <h1>' . $receita[2] . '</h1>
+                                    <a href="#"><i class="las la-times btnClose" id="' . $receita[0] . '"></i></a>
+                
+                                </div>
+                                <div class="informacoesReceita">
+                                    <div class="divInfo">
+                                        <img src="./assets/img/categoriaIcon.png" alt="">
+                                        <label>' . $receita[19] . '</label>
+                                    </div>
+                                    <div class="divInfo">
+                                        <img src="./assets/img/tempoPreparoIcon.png" alt="">
+                                        <label>' . $receita[4] . '</label>
+                                    </div>
+                                    <div class="divInfoExclusiva">
+                                        <img src="./assets/img/porcoesIcon.png" alt="">
+                                        <label>' . $receita[3] . ' Porções</label>
+                                    </div>
+                                    <div class="divInfo">
+                                        <img src="./assets/img/gastoCaloricoIcon.png" alt="">
+                                        <label>' . $receita[3] . ' cal</label>
+                                    </div>
+                
+                
+                                </div>
+                
+                                <div class="modoPreparoReceita">
+                                    <div class="modoPreparoTitulo">
+                                        <div class="imgModoPreparo">
+                                            <img src="./assets/img/modoPreparoIcon.png" alt="">
+                
+                                        </div>
+                                        <h2>Modo de Preparo</h2>
+                                    </div>
+                                    <p>
+                                        ' . $string . '  
+                                    </p>
+                
+                                </div>
+                
+                            </div>
+                        </div>
+                        ';
+                }
+            }
+        } 
+        else {
+            $receitas = ReceitaController::allDetailsReceitas();
+            foreach ($receitas as $receita) {
+
+                if ($receita[19] == 1) {
+                    $receita[19] = "Frutos do Mar";
+                } else if ($receita[19] == 2) {
+                    $receita[19] = "Massas";
+                } else if ($receita[19] == 3) {
+                    $receita[19] = "Veganas";
+                } else if ($receita[19] == 4) {
+                    $receita[19] = "Salgados";
+                } else if ($receita[19] == 5) {
+                    $receita[19] = "Doces";
+                } else if ($receita[19] == 6) {
+                    $receita[19] = "Carnes";
+                };
+
+
+                $ingrediente1 =  empty($receita[6]) === true ? "Não há mais ingredientes" :  $receita[6];
+                $ingrediente2 =  empty($receita[7]) === true ? "Não há mais ingredientes" :  $receita[7];
+                $ingrediente3 =  empty($receita[8]) === true ? "Não há mais ingredientes" :  $receita[8];
+                $ingrediente4 =  empty($receita[9]) === true ? "Não há mais ingredientes" :  $receita[9];
+                $ingrediente5 =  empty($receita[10]) === true ? "Não há mais ingredientes" :  $receita[10];
+                $ingrediente6 =  empty($receita[11]) === true ? "Não há mais ingredientes" :  $receita[11];
+                $ingrediente7 =  empty($receita[12]) === true ? "Não há mais ingredientes" :  $receita[12];
+                $ingrediente8 =  empty($receita[13]) === true ? "Não há mais ingredientes" :  $receita[13];
+                $ingrediente9 =  empty($receita[14]) === true ? "Não há mais ingredientes" :  $receita[14];
+                $ingrediente10 = empty($receita[15]) === true ? "Não há mais ingredientes" :  $receita[15];
+                $ingrediente11 = empty($receita[16]) === true ? "Não há mais ingredientes" :  $receita[16];
+                $ingrediente12 = empty($receita[17]) === true ? "Não há mais ingredientes" :  $receita[17];
+
+
+                $modoDePreparo =  explode(".", $receita[18]);
+                $string = "";
+
+                for ($i = 0; $i < count($modoDePreparo); $i++) {
+                    $numero = $i;
+                    $br = "<br>";
+                    if ($i < count($modoDePreparo) - 1) {
+                        $string .= $numero . ". " . $modoDePreparo[$i] . " " . $br;
+                    }
+                }
+
+                echo '
+                    <div class="detalhesReceita" id="detalhesReceita' . $receita[0] . '">
+                        <div class="col-left">
+                            <div class="videoReceita">
+                                ' . $receita[5] . '
+                            </div>
+                            <div class="ingredientesReceita">
+                                <h2>Ingredientes</h2>
+                                <p>
+                                    -> ' . $ingrediente1 . '
+                                    <br>
+                                    -> ' . $ingrediente2 . '
+                                    <br>
+                                    -> ' . $ingrediente3 . '
+                                    <br>
+                                    -> ' . $ingrediente4 . ' 
+                                    <br>
+                                    -> ' . $ingrediente5 . ' 
+                                    <br>
+                                    -> ' . $ingrediente6 . '
+                                    <br>
+                                    -> ' . $ingrediente7 . '
+                                    <br>
+                                    -> ' . $ingrediente8 . '
+                                    <br>
+                                    -> ' . $ingrediente9 . '
+                                    <br>
+                                    -> ' . $ingrediente10 . '
+                                    <br>
+                                    -> ' . $ingrediente11 . '
+                                    <br>
+                                    -> ' . $ingrediente12 . '
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-right">
+                            <div class="btnCloseAndHeader">
+                                <h1>' . $receita[2] . '</h1>
+                                <a href="#"><i class="las la-times btnClose" id="' . $receita[0] . '"></i></a>
+            
+                            </div>
+                            <div class="informacoesReceita">
+                                <div class="divInfo">
+                                    <img src="./assets/img/categoriaIcon.png" alt="">
+                                    <label>' . $receita[19] . '</label>
+                                </div>
+                                <div class="divInfo">
+                                    <img src="./assets/img/tempoPreparoIcon.png" alt="">
+                                    <label>' . $receita[4] . '</label>
+                                </div>
+                                <div class="divInfoExclusiva">
+                                    <img src="./assets/img/porcoesIcon.png" alt="">
+                                    <label>' . $receita[3] . ' Porções</label>
+                                </div>
+                                <div class="divInfo">
+                                    <img src="./assets/img/gastoCaloricoIcon.png" alt="">
+                                    <label>' . $receita[3] . ' cal</label>
+                                </div>
+            
+            
+                            </div>
+            
+                            <div class="modoPreparoReceita">
+                                <div class="modoPreparoTitulo">
+                                    <div class="imgModoPreparo">
+                                        <img src="./assets/img/modoPreparoIcon.png" alt="">
+            
+                                    </div>
+                                    <h2>Modo de Preparo</h2>
+                                </div>
+                                <p>
+                                    ' . $string . '  
+                                </p>
+            
+                            </div>
+            
+                        </div>
                     </div>
-                    
-                </div>
-            </div>
-            <script src="./assets/js/script-index.js"></script>
-        </div>
-    </body>
+                    ';
+            }
+        }
+        ?>
+
+        <script src="./assets/js/script-index.js"></script>
+    </div>
+</body>
+
 </html>

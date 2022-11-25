@@ -103,7 +103,7 @@ include_once "./assets/php/conexao.php";
                             </span>
                         </label>
                         <label class="custom-radio col-f">
-                            <input type="radio" name="radio" value="5" form="formulario">
+                            <input type="radio" name="categoria" value="5" form="formulario">
                             <span class="radio-btn"><i class="las la-check-circle"></i>
                                 <div class="recipe-icon">
                                     <img src="./assets/img/boloIcone.png"/>
@@ -112,7 +112,7 @@ include_once "./assets/php/conexao.php";
                             </span>
                         </label>
                         <label class="custom-radio col-g">
-                            <input type="radio" name="radio" value="6" form="formulario">
+                            <input type="radio" name="categoria" value="6" form="formulario">
                             <span class="radio-btn"><i class="las la-check-circle"></i>
                                 <div class="recipe-icon">
                                     <img src="./assets/img/carneIcone.png"/>

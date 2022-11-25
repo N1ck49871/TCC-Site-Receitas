@@ -1,6 +1,50 @@
 <?php
 include "./assets/php/conexao.php";
+include_once 'assets/php/usuarioController.php';
 session_start();
+
+$nome = $_SESSION['nomeSessao'];
+$email = $_SESSION['emailSessao'];
+$senha = $_SESSION['senhaSessao'];
+$idUsuario = $_SESSION['idUsuario'];
+
+if (empty($_SESSION['logado'])) {
+    header('Location: login.php?erro=true;');
+    session_destroy();
+}
+
+$userUpdate = new usuarioController();
+
+// // $nomeUsuario = empty($_POST['nome']) === true ? '' : "nomeUsuario = '{$_POST['nome']}'";
+// $nomeUsuario = empty($_POST['nome']) === true ? '' : empty($_POST['email']) === true ? empty($_POST['senha']) === true ? "nomeUsuario = '{$_POST['nome']}'" : "nomeUsuario = '{$_POST['nome']}'," : "nomeUsuario = '{$_POST['nome']}',";
+
+// $emailUsuario = empty($_POST['email']) === true ? '' : empty($_POST['senha']) === true ? "emailUsuario = '{$_POST['email']}'" : "emailUsuario = '{$_POST['email']}'," ;
+
+
+
+
+// echo $nomeUsuario;
+// echo $emailUsuario;
+// echo $_POST['senha']
+
+if (isset($_POST['salvar'])) {
+    
+    $nomeForm = $_POST['nome'];
+    $emailForm = $_POST['email'];
+    $senhaForm = $_POST['senha'];
+
+    if ($userUpdate->updateInformationsUser($nomeForm, $emailForm, $senhaForm, $idUsuario)) {
+        header('Location: login.php');
+    } else {
+        echo '<script>alert("Ocorreu um erro ao tentar atualizar")</script>';
+    }
+};
+
+
+
+
+
+
 ?>
 
 
@@ -29,7 +73,7 @@ session_start();
                     <h1>HomeMadeGourmet</h1>
                 </div>
                 <div class="usuarioInicio">
-                    <h2>Início</h2>
+                    <a href="index.php" style="text-decoration: none;"><h2>Início</h2></a>
                     <svg alt="Icone de foto do usuário" width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M35.75 19.5C35.75 22.0859 34.7228 24.5658 32.8943 26.3943C31.0658 28.2228 28.5859 29.25 26 29.25C23.4141 29.25 20.9342 28.2228 19.1057 26.3943C17.2772 24.5658 16.25 22.0859 16.25 19.5C16.25 16.9141 17.2772 14.4342 19.1057 12.6057C20.9342 10.7772 23.4141 9.75 26 9.75C28.5859 9.75 31.0658 10.7772 32.8943 12.6057C34.7228 14.4342 35.75 16.9141 35.75 19.5Z" fill="#EEAB6E"/>
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M0 26C0 19.1044 2.73928 12.4912 7.61522 7.61522C12.4912 2.73928 19.1044 0 26 0C32.8956 0 39.5088 2.73928 44.3848 7.61522C49.2607 12.4912 52 19.1044 52 26C52 32.8956 49.2607 39.5088 44.3848 44.3848C39.5088 49.2607 32.8956 52 26 52C19.1044 52 12.4912 49.2607 7.61522 44.3848C2.73928 39.5088 0 32.8956 0 26ZM26 3.25C21.7158 3.25023 17.5187 4.46018 13.8918 6.74059C10.2649 9.021 7.35567 12.2792 5.49888 16.1401C3.6421 20.0011 2.91326 24.3079 3.39624 28.5648C3.87923 32.8217 5.55442 36.8557 8.229 40.2025C10.5365 36.4845 15.6163 32.5 26 32.5C36.3838 32.5 41.4603 36.4812 43.771 40.2025C46.4456 36.8557 48.1208 32.8217 48.6038 28.5648C49.0867 24.3079 48.3579 20.0011 46.5011 16.1401C44.6443 12.2792 41.7351 9.021 38.1082 6.74059C34.4813 4.46018 30.2842 3.25023 26 3.25Z" fill="#EEAB6E"/>
@@ -49,25 +93,26 @@ session_start();
                     <div class="col-right">
                         <div class="nome">
                             <label for="">Nome</label>
-                            <input type="text" name="nome" id="nome" placeholder="Henrriky">
+                            <!-- <input disabled type="text" name="nome" id="nome" placeholder="Henrriky"> -->
+                            <?php echo "<input disabled type='text' name='nome' id='nome' placeholder='$nome'>" ?>
                         </div>
                         <div class="email">
                             <label for="">E-mail</label>
-                            <input type="text" name="email" id="email" placeholder="tectutors.123@gmail.com">
+                            <?php echo "<input disabled type='email' name='email' id='email' placeholder='$email'>" ?>
                         </div>
                         <div class="senha">
                             <label for="">Senha</label>
-                            <input type="password" name="senha" id="senha" placeholder="*************">
+                            <?php echo "<input disabled type='password' name='senha' id='senha' placeholder='$senha'>" ?>
                         </div>
                         <div class="buttons">
-                            <button type="submit">SALVAR</button>
-                            <button type="button">EDITAR DADOS</button>
+                            <button type="submit" name="salvar">SALVAR</button>
+                            <button id="alterDataButton" type="button">EDITAR DADOS</button>
                         </div>
                     </div>
                 </form>
             </section>
         </div>
-
+    <script src="./assets/js/script-profile.js"></script>
 
     <body>
         

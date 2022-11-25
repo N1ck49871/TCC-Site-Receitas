@@ -112,8 +112,10 @@ input:valid ~ span.show {
 
 }
 
+
 input:focus ~ label, /* Seleciona todo elemento label precedido de um input selecionado */
-input:valid ~ label { /* Seleciona todo elemento label precedido de um input validado*/
+input:valid ~ label
+{ /* Seleciona todo elemento label precedido de um input validado*/
     transform: translateY(-3.7rem);
     background: white; /* Cor de fundo do elemento label, para que ele se sobreponha a linha azul; está uma camada acima dos elementos */
     padding-inline: .3rem;

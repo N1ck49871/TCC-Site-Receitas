@@ -1,4 +1,13 @@
 const show = document.querySelectorAll(".show"); //[show1, show2]
+const input = document.querySelector('#email');
+
+input.addEventListener("change", () => input.nextElementSibling.style.cssText = `
+    transform: translateY(-3.7rem);
+    background: white; /* Cor de fundo do elemento label, para que ele se sobreponha a linha azul; está uma camada acima dos elementos */
+    padding-inline: .3rem;
+    font-size: 1.6rem;
+    color: var(--orange);
+`);
 /*
 show[0].addEventListener('click', () => console.log('testando'));
 show[1].addEventListener('click', () => console.log('testando')); 

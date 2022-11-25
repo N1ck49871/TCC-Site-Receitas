@@ -106,6 +106,10 @@ body {
     width: 60vw;
 }
 
+.container section .col-right div input:disabled {
+    background-color: #FFFFFF;
+}
+
 .container section .col-right .buttons {
     display: flex;
     justify-content: center;

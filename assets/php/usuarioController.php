@@ -1,8 +1,6 @@
 <?php
 include_once "conexao.php";
 
-
-
 class usuarioController{
 
     public static function favCategoriaUser ( $idUsuario) {
@@ -31,15 +29,11 @@ class usuarioController{
      public function login($email, $senha) {
         $conexao = new Conexao();
         $conexao = $conexao->conexao();  
-        $stmt = $conexao->prepare("SELECT nomeUsuario, emailUsuario, senhaUsuario, idCategoriaFK FROM usuario WHERE emailUsuario = :email AND senhaUsuario = :senha");
+        $stmt = $conexao->prepare("SELECT nomeUsuario, emailUsuario, senhaUsuario, idUsuario FROM usuario WHERE emailUsuario = :email AND senhaUsuario = :senha");
         $stmt->execute(array('email' => $email, 'senha' => $senha));
         if ($stmt->rowcount() > 0) {
             $result = $stmt->fetch();
-            $_SESSION['logged_in'] = true;
-            $_SESSION['user_email'] = $result['email']; 
-            $_SESSION['senha'] = $result['pswrd']; 
-            $_SESSION['user_nome'] = $result['nome'];
-            return true;
+            return [true, $result['emailUsuario'], $result['senhaUsuario'], $result['nomeUsuario'], $result['idUsuario']];
         }else {
             return false;
         }
@@ -54,6 +48,24 @@ class usuarioController{
             return true;
         }
         return false;
+    }
+
+    public function updateInformationsUser ($nome , $email, $senha, $idUsuario) {
+        // $nomeUsuario = empty($nome) === true ? '' : "nomeUsuario = '{$nome}',";
+        // $emailUsuario = empty($email) === true ? '' : "emailUsuario = '{$email}',";
+        $nomeUsuario = empty($nome) === true ? '' : empty($email) === true ? empty($senha) === true ? "nomeUsuario = '{$nome}'" : "nomeUsuario = '{$nome}'," : "nomeUsuario = '{$nome}',";
+        $emailUsuario = empty($email) === true ? '' : empty($senha) === true ? "emailUsuario = '{$email}'" : "emailUsuario = '{$email}'," ;
+        $senhaUsuario = empty($senha) === true ? '' : "senhaUsuario = '{$senha}'";
+        $conexao = new Conexao();
+        $conexao = $conexao->conexao();  
+        $stmt = $conexao->prepare("UPDATE usuario SET $nomeUsuario $emailUsuario $senhaUsuario WHERE idUsuario=$idUsuario");
+        // $stmt = $conexao->prepare("UPDATE usuario SET nomeUsuario = 'Lol', emailUsuario = 'h@gmail.com', senhaUsuario=123 WHERE idUsuario=1");
+        if($stmt->execute()) {
+            return true;
+        } else {
+          return false;
+        }
+
     }
 
 
