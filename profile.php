@@ -1,6 +1,8 @@
 <?php
-include "./assets/php/conexao.php";
-include_once 'assets/php/usuarioController.php';
+include_once "./assets/php/conexao.php";
+include_once "assets/php/usuarioController.php";
+
+
 session_start();
 
 $nome = $_SESSION['nomeSessao'];
@@ -15,17 +17,6 @@ if (empty($_SESSION['logado'])) {
 
 $userUpdate = new usuarioController();
 
-// // $nomeUsuario = empty($_POST['nome']) === true ? '' : "nomeUsuario = '{$_POST['nome']}'";
-// $nomeUsuario = empty($_POST['nome']) === true ? '' : empty($_POST['email']) === true ? empty($_POST['senha']) === true ? "nomeUsuario = '{$_POST['nome']}'" : "nomeUsuario = '{$_POST['nome']}'," : "nomeUsuario = '{$_POST['nome']}',";
-
-// $emailUsuario = empty($_POST['email']) === true ? '' : empty($_POST['senha']) === true ? "emailUsuario = '{$_POST['email']}'" : "emailUsuario = '{$_POST['email']}'," ;
-
-
-
-
-// echo $nomeUsuario;
-// echo $emailUsuario;
-// echo $_POST['senha']
 
 if (isset($_POST['salvar'])) {
     
@@ -33,8 +24,11 @@ if (isset($_POST['salvar'])) {
     $emailForm = $_POST['email'];
     $senhaForm = $_POST['senha'];
 
+    
+
     if ($userUpdate->updateInformationsUser($nomeForm, $emailForm, $senhaForm, $idUsuario)) {
         header('Location: login.php');
+        session_destroy();
     } else {
         echo '<script>alert("Ocorreu um erro ao tentar atualizar")</script>';
     }
@@ -82,7 +76,7 @@ if (isset($_POST['salvar'])) {
                     
             </header>
             <section>
-                <form action="" method="POST">
+                <form action="profile.php" method="POST">
                     <div class="col-left">
                         <svg width="268" height="268" viewBox="0 0 268 268" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M184.25 100.5C184.25 113.827 178.956 126.608 169.532 136.032C160.108 145.456 147.327 150.75 134 150.75C120.673 150.75 107.892 145.456 98.4679 136.032C89.0442 126.608 83.75 113.827 83.75 100.5C83.75 87.1729 89.0442 74.3916 98.4679 64.9679C107.892 55.5442 120.673 50.25 134 50.25C147.327 50.25 160.108 55.5442 169.532 64.9679C178.956 74.3916 184.25 87.1729 184.25 100.5Z" fill="#EEAB6E"/>

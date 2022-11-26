@@ -50,12 +50,45 @@ class usuarioController{
         return false;
     }
 
-    public function updateInformationsUser ($nome , $email, $senha, $idUsuario) {
-        // $nomeUsuario = empty($nome) === true ? '' : "nomeUsuario = '{$nome}',";
-        // $emailUsuario = empty($email) === true ? '' : "emailUsuario = '{$email}',";
-        $nomeUsuario = empty($nome) === true ? '' : empty($email) === true ? empty($senha) === true ? "nomeUsuario = '{$nome}'" : "nomeUsuario = '{$nome}'," : "nomeUsuario = '{$nome}',";
-        $emailUsuario = empty($email) === true ? '' : empty($senha) === true ? "emailUsuario = '{$email}'" : "emailUsuario = '{$email}'," ;
-        $senhaUsuario = empty($senha) === true ? '' : "senhaUsuario = '{$senha}'";
+    public function updateInformationsUser ($nomeForm , $emailForm, $senhaForm, $idUsuario) {
+        // $nomeUsuario = empty($nome) === true ? '' : empty($email) === true ? empty($senha) === true ? "nomeUsuario = '{$nome}'" : "nomeUsuario = '{$nome}'," : "nomeUsuario = '{$nome}',";
+
+        // $emailUsuario = empty($email) === true ? '' : empty($senha) === true ? "emailUsuario = '{$email}'" : "emailUsuario = '{$email}'," ;
+        
+        // $senhaUsuario = empty($senha) === true ? '' : "senhaUsuario = '{$senha}'";
+        $nomeUsuario = '';
+
+        $emailUsuario = '';
+        
+        $senhaUsuario = '';
+
+        
+        if(empty($nomeForm) === true) {
+            $nomeUsuario = '';
+        } else {
+            if (empty($emailForm) === true && empty($senhaForm) === true) {
+                $nomeUsuario = "nomeUsuario = '{$nomeForm}'";
+            } else {
+                $nomeUsuario = "nomeUsuario = '{$nomeForm}',";
+            }
+        }
+    
+        if(empty($emailForm) === true) {
+            $emailUsuario = '';
+        } else {
+            if (empty($senhaForm) === true) {
+                $emailUsuario = "emailUsuario = '{$emailForm}'";
+            } else {
+                $emailUsuario = "emailUsuario = '{$emailForm}',";
+            }
+        }
+    
+        if(empty($senhaForm) === true) {
+            $senhaUsuario = '';
+        } else {
+            $senhaUsuario = "senhaUsuario = '{$senhaForm}'";
+        }
+        
         $conexao = new Conexao();
         $conexao = $conexao->conexao();  
         $stmt = $conexao->prepare("UPDATE usuario SET $nomeUsuario $emailUsuario $senhaUsuario WHERE idUsuario=$idUsuario");
