@@ -148,7 +148,6 @@ $logout = new usuarioController();
                             } else {
                                 foreach ($receitas as $receita) {
 
-
                                     if ($receita[3] == 1) {
                                         $receita[3] = "Frutos do Mar";
                                     } else if ($receita[3] == 2) {
@@ -168,7 +167,7 @@ $logout = new usuarioController();
                                 <div class="itemReceita">
                                     <div class="btnAbrirReceita  id=' . $receita[0] . '">
                                         <div class="imgReceita" id=' . $receita[0] . '>
-                                            <img src="./assets/img/food.jpg" id=' . $receita[0] . '>
+                                            <img src="./assets/img/'.$receita[4].'" id=' . $receita[0] . '>
                                         </div>
                                         <div class="alignItems" id=' . $receita[0] . '>
                                             <div class="nomeReceita" id=' . $receita[0] . '>
@@ -225,7 +224,7 @@ $logout = new usuarioController();
                                     <div class="itemReceita">
                                         <div class="btnAbrirReceita  id=' . $receita[0] . '">
                                             <div class="imgReceita" id=' . $receita[0] . '>
-                                                <img src="./assets/img/food.jpg" id=' . $receita[0] . '>
+                                                <img src="./assets/img/'.$receita[4].'" id=' . $receita[0] . '>
                                             </div>
                                             <div class="alignItems" id=' . $receita[0] . '>
                                                 <div class="nomeReceita" id=' . $receita[0] . '>
@@ -284,7 +283,7 @@ $logout = new usuarioController();
                                     <div class="itemReceita">
                                         <div class="btnAbrirReceita  id=' . $receita[0] . '">
                                             <div class="imgReceita" id=' . $receita[0] . '>
-                                                <img src="./assets/img/food.jpg" id=' . $receita[0] . '>
+                                                <img src="./assets/img/'.$receita[4].'" id=' . $receita[0] . '>
                                             </div>
                                             <div class="alignItems" id=' . $receita[0] . '>
                                                 <div class="nomeReceita" id=' . $receita[0] . '>
@@ -334,7 +333,7 @@ $logout = new usuarioController();
                             <div class="itemReceita">
                                 <div class="btnAbrirReceita  id=' . $receita[0] . '">
                                     <div class="imgReceita" id=' . $receita[0] . '>
-                                        <img src="./assets/img/food.jpg" id=' . $receita[0] . '>
+                                        <img src="./assets/img/'.$receita[4].'" id=' . $receita[0] . '>
                                     </div>
                                     <div class="alignItems" id=' . $receita[0] . '>
                                         <div class="nomeReceita" id=' . $receita[0] . '>
@@ -373,18 +372,18 @@ $logout = new usuarioController();
                 $receitas = ReceitaController::allDetailsReceitasByCategory($idCategoriaFKK);
                 foreach ($receitas as $receita) {
 
-                    if ($receita[19] == 1) {
-                        $receita[19] = "Frutos do Mar";
-                    } else if ($receita[19] == 2) {
-                        $receita[19] = "Massas";
-                    } else if ($receita[19] == 3) {
-                        $receita[19] = "Veganas";
-                    } else if ($receita[19] == 4) {
-                        $receita[19] = "Salgados";
-                    } else if ($receita[19] == 5) {
-                        $receita[19] = "Doces";
-                    } else if ($receita[19] == 6) {
-                        $receita[19] = "Carnes";
+                    if ($receita[22] == 1) {
+                        $receita[22] = "Frutos do Mar";
+                    } else if ($receita[22] == 2) {
+                        $receita[22] = "Massas";
+                    } else if ($receita[22] == 3) {
+                        $receita[22] = "Veganas";
+                    } else if ($receita[22] == 4) {
+                        $receita[22] = "Salgados";
+                    } else if ($receita[22] == 5) {
+                        $receita[22] = "Doces";
+                    } else if ($receita[22] == 6) {
+                        $receita[22] = "Carnes";
                     };
 
 
@@ -400,9 +399,12 @@ $logout = new usuarioController();
                     $ingrediente10 = empty($receita[15]) === true ? "Não há mais ingredientes" :  $receita[15];
                     $ingrediente11 = empty($receita[16]) === true ? "Não há mais ingredientes" :  $receita[16];
                     $ingrediente12 = empty($receita[17]) === true ? "Não há mais ingredientes" :  $receita[17];
+                    $ingrediente13 = empty($receita[18]) === true ? "Não há mais ingredientes" :  $receita[18];
+                    $ingrediente14 = empty($receita[19]) === true ? "Não há mais ingredientes" :  $receita[19];
+                    $ingrediente15 = empty($receita[20]) === true ? "Não há mais ingredientes" :  $receita[20];
 
 
-                    $modoDePreparo =  explode(".", $receita[18]);
+                    $modoDePreparo =  explode(".", $receita[21]);
                     $string = "";
 
                     for ($i = 0; $i < count($modoDePreparo); $i++) {
@@ -445,6 +447,12 @@ $logout = new usuarioController();
                                         -> ' . $ingrediente11 . '
                                         <br>
                                         -> ' . $ingrediente12 . '
+                                        <br>
+                                        -> ' . $ingrediente13 . '
+                                        <br>
+                                        -> ' . $ingrediente14 . '
+                                        <br>
+                                        -> ' . $ingrediente15 . '
                                     </p>
                                 </div>
                             </div>
@@ -457,7 +465,7 @@ $logout = new usuarioController();
                                 <div class="informacoesReceita">
                                     <div class="divInfo">
                                         <img src="./assets/img/categoriaIcon.png" alt="">
-                                        <label>' . $receita[19] . '</label>
+                                        <label>' . $receita[22] . '</label>
                                     </div>
                                     <div class="divInfo">
                                         <img src="./assets/img/tempoPreparoIcon.png" alt="">
@@ -500,18 +508,18 @@ $logout = new usuarioController();
 
                 foreach ($receitas as $receita) {
 
-                    if ($receita[19] == 1) {
-                        $receita[19] = "Frutos do Mar";
-                    } else if ($receita[19] == 2) {
-                        $receita[19] = "Massas";
-                    } else if ($receita[19] == 3) {
-                        $receita[19] = "Veganas";
-                    } else if ($receita[19] == 4) {
-                        $receita[19] = "Salgados";
-                    } else if ($receita[19] == 5) {
-                        $receita[19] = "Doces";
-                    } else if ($receita[19] == 6) {
-                        $receita[19] = "Carnes";
+                    if ($receita[22] == 1) {
+                        $receita[22] = "Frutos do Mar";
+                    } else if ($receita[22] == 2) {
+                        $receita[22] = "Massas";
+                    } else if ($receita[22] == 3) {
+                        $receita[22] = "Veganas";
+                    } else if ($receita[22] == 4) {
+                        $receita[22] = "Salgados";
+                    } else if ($receita[22] == 5) {
+                        $receita[22] = "Doces";
+                    } else if ($receita[22] == 6) {
+                        $receita[22] = "Carnes";
                     };
 
 
@@ -527,9 +535,12 @@ $logout = new usuarioController();
                     $ingrediente10 = empty($receita[15]) === true ? "Não há mais ingredientes" :  $receita[15];
                     $ingrediente11 = empty($receita[16]) === true ? "Não há mais ingredientes" :  $receita[16];
                     $ingrediente12 = empty($receita[17]) === true ? "Não há mais ingredientes" :  $receita[17];
+                    $ingrediente13 = empty($receita[18]) === true ? "Não há mais ingredientes" :  $receita[18];
+                    $ingrediente14 = empty($receita[19]) === true ? "Não há mais ingredientes" :  $receita[19];
+                    $ingrediente15 = empty($receita[20]) === true ? "Não há mais ingredientes" :  $receita[20];
 
 
-                    $modoDePreparo =  explode(".", $receita[18]);
+                    $modoDePreparo =  explode(".", $receita[21]);
                     $string = "";
 
                     for ($i = 0; $i < count($modoDePreparo); $i++) {
@@ -572,6 +583,12 @@ $logout = new usuarioController();
                                         -> ' . $ingrediente11 . '
                                         <br>
                                         -> ' . $ingrediente12 . '
+                                        <br>
+                                        -> ' . $ingrediente13 . '
+                                        <br>
+                                        -> ' . $ingrediente14 . '
+                                        <br>
+                                        -> ' . $ingrediente15 . '
                                     </p>
                                 </div>
                             </div>
@@ -584,7 +601,7 @@ $logout = new usuarioController();
                                 <div class="informacoesReceita">
                                     <div class="divInfo">
                                         <img src="./assets/img/categoriaIcon.png" alt="">
-                                        <label>' . $receita[19] . '</label>
+                                        <label>' . $receita[22] . '</label>
                                     </div>
                                     <div class="divInfo">
                                         <img src="./assets/img/tempoPreparoIcon.png" alt="">
@@ -624,22 +641,22 @@ $logout = new usuarioController();
             else {
                 $idCategoriaFKK = $_GET['categoriaReceita'];
                 $search = $_GET['pesquisa'];
-                $receitas = ReceitaController::allDetailsReceitasBySearch($search);
+                $receitas = ReceitaController::allDetailsReceitasBySearchAndCategory($search, $idCategoriaFKK);
 
                 foreach ($receitas as $receita) {
 
-                    if ($receita[19] == 1) {
-                        $receita[19] = "Frutos do Mar";
-                    } else if ($receita[19] == 2) {
-                        $receita[19] = "Massas";
-                    } else if ($receita[19] == 3) {
-                        $receita[19] = "Veganas";
-                    } else if ($receita[19] == 4) {
-                        $receita[19] = "Salgados";
-                    } else if ($receita[19] == 5) {
-                        $receita[19] = "Doces";
-                    } else if ($receita[19] == 6) {
-                        $receita[19] = "Carnes";
+                    if ($receita[22] == 1) {
+                        $receita[22] = "Frutos do Mar";
+                    } else if ($receita[22] == 2) {
+                        $receita[22] = "Massas";
+                    } else if ($receita[22] == 3) {
+                        $receita[22] = "Veganas";
+                    } else if ($receita[22] == 4) {
+                        $receita[22] = "Salgados";
+                    } else if ($receita[22] == 5) {
+                        $receita[22] = "Doces";
+                    } else if ($receita[22] == 6) {
+                        $receita[22] = "Carnes";
                     };
 
 
@@ -655,9 +672,12 @@ $logout = new usuarioController();
                     $ingrediente10 = empty($receita[15]) === true ? "Não há mais ingredientes" :  $receita[15];
                     $ingrediente11 = empty($receita[16]) === true ? "Não há mais ingredientes" :  $receita[16];
                     $ingrediente12 = empty($receita[17]) === true ? "Não há mais ingredientes" :  $receita[17];
+                    $ingrediente13 = empty($receita[18]) === true ? "Não há mais ingredientes" :  $receita[18];
+                    $ingrediente14 = empty($receita[19]) === true ? "Não há mais ingredientes" :  $receita[19];
+                    $ingrediente15 = empty($receita[20]) === true ? "Não há mais ingredientes" :  $receita[20];
 
 
-                    $modoDePreparo =  explode(".", $receita[18]);
+                    $modoDePreparo =  explode(".", $receita[21]);
                     $string = "";
 
                     for ($i = 0; $i < count($modoDePreparo); $i++) {
@@ -700,6 +720,12 @@ $logout = new usuarioController();
                                         -> ' . $ingrediente11 . '
                                         <br>
                                         -> ' . $ingrediente12 . '
+                                        <br>
+                                        -> ' . $ingrediente13 . '
+                                        <br>
+                                        -> ' . $ingrediente14 . '
+                                        <br>
+                                        -> ' . $ingrediente15 . '
                                     </p>
                                 </div>
                             </div>
@@ -712,7 +738,7 @@ $logout = new usuarioController();
                                 <div class="informacoesReceita">
                                     <div class="divInfo">
                                         <img src="./assets/img/categoriaIcon.png" alt="">
-                                        <label>' . $receita[19] . '</label>
+                                        <label>' . $receita[22] . '</label>
                                     </div>
                                     <div class="divInfo">
                                         <img src="./assets/img/tempoPreparoIcon.png" alt="">
@@ -754,18 +780,18 @@ $logout = new usuarioController();
             $receitas = ReceitaController::allDetailsReceitas();
             foreach ($receitas as $receita) {
 
-                if ($receita[19] == 1) {
-                    $receita[19] = "Frutos do Mar";
-                } else if ($receita[19] == 2) {
-                    $receita[19] = "Massas";
-                } else if ($receita[19] == 3) {
-                    $receita[19] = "Veganas";
-                } else if ($receita[19] == 4) {
-                    $receita[19] = "Salgados";
-                } else if ($receita[19] == 5) {
-                    $receita[19] = "Doces";
-                } else if ($receita[19] == 6) {
-                    $receita[19] = "Carnes";
+                if ($receita[22] == 1) {
+                    $receita[22] = "Frutos do Mar";
+                } else if ($receita[22] == 2) {
+                    $receita[22] = "Massas";
+                } else if ($receita[22] == 3) {
+                    $receita[22] = "Veganas";
+                } else if ($receita[22] == 4) {
+                    $receita[22] = "Salgados";
+                } else if ($receita[22] == 5) {
+                    $receita[22] = "Doces";
+                } else if ($receita[22] == 6) {
+                    $receita[22] = "Carnes";
                 };
 
 
@@ -781,9 +807,12 @@ $logout = new usuarioController();
                 $ingrediente10 = empty($receita[15]) === true ? "Não há mais ingredientes" :  $receita[15];
                 $ingrediente11 = empty($receita[16]) === true ? "Não há mais ingredientes" :  $receita[16];
                 $ingrediente12 = empty($receita[17]) === true ? "Não há mais ingredientes" :  $receita[17];
+                $ingrediente13 = empty($receita[18]) === true ? "Não há mais ingredientes" :  $receita[18];
+                $ingrediente14 = empty($receita[19]) === true ? "Não há mais ingredientes" :  $receita[19];
+                $ingrediente15 = empty($receita[20]) === true ? "Não há mais ingredientes" :  $receita[20];
 
 
-                $modoDePreparo =  explode(".", $receita[18]);
+                $modoDePreparo =  explode(".", $receita[21]);
                 $string = "";
 
                 for ($i = 0; $i < count($modoDePreparo); $i++) {
@@ -826,6 +855,12 @@ $logout = new usuarioController();
                                     -> ' . $ingrediente11 . '
                                     <br>
                                     -> ' . $ingrediente12 . '
+                                    <br>
+                                    -> ' . $ingrediente13 . '
+                                    <br>
+                                    -> ' . $ingrediente14 . '
+                                    <br>
+                                    -> ' . $ingrediente15 . '
                                 </p>
                             </div>
                         </div>
@@ -838,7 +873,7 @@ $logout = new usuarioController();
                             <div class="informacoesReceita">
                                 <div class="divInfo">
                                     <img src="./assets/img/categoriaIcon.png" alt="">
-                                    <label>' . $receita[19] . '</label>
+                                    <label>' . $receita[22] . '</label>
                                 </div>
                                 <div class="divInfo">
                                     <img src="./assets/img/tempoPreparoIcon.png" alt="">
