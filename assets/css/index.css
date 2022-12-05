@@ -372,9 +372,8 @@ body::-webkit-scrollbar-track {
 }
 
 .receitas .imgReceita img {
-    width: 100%;
-    min-height: 20rem;
-    display: block;
+    width: 22.4rem;
+    height: 16rem;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
 }

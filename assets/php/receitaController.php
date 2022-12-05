@@ -17,7 +17,7 @@ class ReceitaController {
     public static function allReceitas(){
         $conn = new Conexao();
         $conn = $conn->conexao();
-        $stmt = $conn->prepare("SELECT `idReceita`,`nomeReceita`, `tempoReceita`, `idcategoriaFK` FROM receita");
+        $stmt = $conn->prepare("SELECT `idReceita`,`nomeReceita`, `tempoReceita`, `idcategoriaFK`, `imagem` FROM receita");
         $stmt->execute();
         $receitas = $stmt->fetchAll();
         $stmt = null;
@@ -46,6 +46,9 @@ class ReceitaController {
         `ingrediente_10`, 
         `ingrediente_11`, 
         `ingrediente_12`, 
+        `ingrediente_13`, 
+        `ingrediente_14`, 
+        `ingrediente_15`, 
         `modoPreparo`,
         `idcategoriaFK` FROM `receita`");
         $stmt->execute();
@@ -58,7 +61,7 @@ class ReceitaController {
     public static function getRecipesByCategory ($categoriaSelect) {
         $conn = new Conexao();
         $conn = $conn->conexao();
-        $stmt = $conn->prepare("SELECT `idReceita`,`nomeReceita`, `tempoReceita`, `idcategoriaFK` FROM `receita` WHERE idcategoriaFK=$categoriaSelect;");
+        $stmt = $conn->prepare("SELECT `idReceita`,`nomeReceita`, `tempoReceita`, `idcategoriaFK`, `imagem` FROM `receita` WHERE idcategoriaFK=$categoriaSelect;");
         $stmt->execute();
         $resultado = $stmt->fetchAll();
         $stmt = null;
@@ -87,6 +90,9 @@ class ReceitaController {
         `ingrediente_10`, 
         `ingrediente_11`, 
         `ingrediente_12`, 
+        `ingrediente_13`, 
+        `ingrediente_14`, 
+        `ingrediente_15`, 
         `modoPreparo`,
         `idcategoriaFK` FROM `receita` WHERE idcategoriaFK=$categoriaSelect");
         $stmt->execute();
@@ -103,7 +109,8 @@ class ReceitaController {
         `idReceita`,
         `nomeReceita`, 
         `tempoReceita`, 
-        `idcategoriaFK`
+        `idcategoriaFK`,
+        `imagem`
         FROM `receita` 
         WHERE
         ingrediente_1   like '%{$search}%' or 
@@ -117,7 +124,10 @@ class ReceitaController {
         ingrediente_9   like '%{$search}%' or 
         ingrediente_10  like '%{$search}%' or 
         ingrediente_11  like '%{$search}%' or 
-        ingrediente_12  like '%{$search}%' 
+        ingrediente_12  like '%{$search}%' or 
+        ingrediente_13  like '%{$search}%' or 
+        ingrediente_14  like '%{$search}%' or 
+        ingrediente_15  like '%{$search}%' 
         ");
         $stmt->execute();
         $resultado = $stmt->fetchAll();
@@ -147,6 +157,9 @@ class ReceitaController {
         `ingrediente_10`, 
         `ingrediente_11`, 
         `ingrediente_12`, 
+        `ingrediente_13`, 
+        `ingrediente_14`, 
+        `ingrediente_15`, 
         `modoPreparo`,
         `idcategoriaFK` 
         FROM `receita` 
@@ -162,7 +175,10 @@ class ReceitaController {
         ingrediente_9   like '%{$search}%' or 
         ingrediente_10  like '%{$search}%' or 
         ingrediente_11  like '%{$search}%' or 
-        ingrediente_12  like '%{$search}%' 
+        ingrediente_12  like '%{$search}%' or 
+        ingrediente_13  like '%{$search}%' or 
+        ingrediente_14  like '%{$search}%' or 
+        ingrediente_15  like '%{$search}%' 
         ");
         $stmt->execute();
         $resultado = $stmt->fetchAll();
@@ -177,7 +193,8 @@ class ReceitaController {
             `idReceita`,
             `nomeReceita`, 
             `tempoReceita`, 
-            `idcategoriaFK`
+            `idcategoriaFK`,
+            `imagem`
             FROM  `receita`
             WHERE idcategoriaFK=$category AND 
             (ingrediente_1   like '%{$search}%' or 
@@ -191,7 +208,10 @@ class ReceitaController {
             ingrediente_9   like '%{$search}%' or 
             ingrediente_10  like '%{$search}%' or 
             ingrediente_11  like '%{$search}%' or 
-            ingrediente_12  like '%{$search}%');
+            ingrediente_12  like '%{$search}%' or 
+            ingrediente_13  like '%{$search}%' or 
+            ingrediente_14  like '%{$search}%' or 
+            ingrediente_15  like '%{$search}%');
         ");
         $stmt->execute();
         $resultado = $stmt->fetchAll();
@@ -221,6 +241,9 @@ class ReceitaController {
             `ingrediente_10`, 
             `ingrediente_11`, 
             `ingrediente_12`, 
+            `ingrediente_13`, 
+            `ingrediente_14`, 
+            `ingrediente_15`, 
             `modoPreparo`,
             `idcategoriaFK` 
             FROM  `receita`
@@ -236,7 +259,10 @@ class ReceitaController {
             ingrediente_9   like '%{$search}%' or 
             ingrediente_10  like '%{$search}%' or 
             ingrediente_11  like '%{$search}%' or 
-            ingrediente_12  like '%{$search}%');
+            ingrediente_12  like '%{$search}%' or 
+            ingrediente_13  like '%{$search}%' or 
+            ingrediente_14  like '%{$search}%' or 
+            ingrediente_15  like '%{$search}%');
         ");
 
         $stmt->execute();
