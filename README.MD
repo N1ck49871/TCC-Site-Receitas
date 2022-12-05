@@ -1,2 +1,6 @@
-select * from receita where ingrediente_1 like '%sal%' or ingrediente_2 like '%sal%';
-select nomeReceita from receita where ingrediente_1 like '%sal%' or ingrediente_2 like '%sal%';
+# Passos para rodar o site
+
+- Baixe os arquivos e mova eles para a pasta HTDOCS do XAMP
+- Abra o phpmyadmin e importe o código do banco de dados
+- Inicialize o MySQL e o Apache
+- Entre no site
