@@ -400,6 +400,8 @@ body::-webkit-scrollbar-track {
     background-color: rgb(243, 243, 243);
     margin: auto auto;
     /*margin: 20px auto;*/
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .detalhesReceita .col-left {

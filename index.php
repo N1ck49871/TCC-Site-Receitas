@@ -904,7 +904,6 @@ $logout = new usuarioController();
                                 </p>
             
                             </div>
-            
                         </div>
                     </div>
                     ';
