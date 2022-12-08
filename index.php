@@ -477,7 +477,7 @@ $logout = new usuarioController();
                                     </div>
                                     <div class="divInfo">
                                         <img src="./assets/img/gastoCaloricoIcon.png" alt="">
-                                        <label>' . $receita[3] . ' cal</label>
+                                        <label>' . $receita[1] . ' cal</label>
                                     </div>
                 
                 
@@ -613,7 +613,7 @@ $logout = new usuarioController();
                                     </div>
                                     <div class="divInfo">
                                         <img src="./assets/img/gastoCaloricoIcon.png" alt="">
-                                        <label>' . $receita[3] . ' cal</label>
+                                        <label>' . $receita[1] . ' cal</label>
                                     </div>
                 
                 
@@ -750,7 +750,7 @@ $logout = new usuarioController();
                                     </div>
                                     <div class="divInfo">
                                         <img src="./assets/img/gastoCaloricoIcon.png" alt="">
-                                        <label>' . $receita[3] . ' cal</label>
+                                        <label>' . $receita[1] . ' cal</label>
                                     </div>
                 
                 
@@ -885,7 +885,7 @@ $logout = new usuarioController();
                                 </div>
                                 <div class="divInfo">
                                     <img src="./assets/img/gastoCaloricoIcon.png" alt="">
-                                    <label>' . $receita[3] . ' cal</label>
+                                    <label>' . $receita[1] . ' cal</label>
                                 </div>
             
             
